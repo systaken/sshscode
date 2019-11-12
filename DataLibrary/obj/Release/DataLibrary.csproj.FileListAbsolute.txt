@@ -1,0 +1,10 @@
+G:\Development\POSInventory\SalesandInventory\DataLibrary\bin\Release\DataLibrary.dll.config
+G:\Development\POSInventory\SalesandInventory\DataLibrary\bin\Release\DataLibrary.dll
+G:\Development\POSInventory\SalesandInventory\DataLibrary\bin\Release\DataLibrary.pdb
+G:\Development\POSInventory\SalesandInventory\DataLibrary\bin\Release\EntityFramework.dll
+G:\Development\POSInventory\SalesandInventory\DataLibrary\bin\Release\EntityFramework.xml
+G:\Development\POSInventory\SalesandInventory\DataLibrary\obj\Release\DataLibrary.csprojAssemblyReference.cache
+G:\Development\POSInventory\SalesandInventory\DataLibrary\obj\Release\DataLibrary.csproj.CoreCompileInputs.cache
+G:\Development\POSInventory\SalesandInventory\DataLibrary\obj\Release\DataLibrary.csproj.CopyComplete
+G:\Development\POSInventory\SalesandInventory\DataLibrary\obj\Release\DataLibrary.dll
+G:\Development\POSInventory\SalesandInventory\DataLibrary\obj\Release\DataLibrary.pdb

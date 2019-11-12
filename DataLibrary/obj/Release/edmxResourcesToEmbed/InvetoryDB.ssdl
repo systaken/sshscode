@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POInventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="ref_access">
+    <Key>
+      <PropertyRef Name="access_id" />
+    </Key>
+    <Property Name="access_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="module_id" Type="int" />
+    <Property Name="hasAccess" Type="int" />
+  </EntityType>
+  <EntityType Name="ref_category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryname" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ref_measurement">
+    <Key>
+      <PropertyRef Name="measure_id" />
+    </Key>
+    <Property Name="measure_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="measurement" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ref_module">
+    <Key>
+      <PropertyRef Name="module_id" />
+    </Key>
+    <Property Name="module_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="moduleName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ref_product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_id" Type="int" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="8" />
+    <Property Name="ProductName" Type="varchar" MaxLength="50" />
+    <Property Name="ProductDescription" Type="varchar(max)" />
+    <Property Name="Barcode" Type="varchar" MaxLength="50" />
+    <Property Name="measurement" Type="varchar" MaxLength="50" />
+    <Property Name="supplierprice" Type="float" />
+    <Property Name="retailprice" Type="float" />
+    <Property Name="QTY" Type="int" />
+    <Property Name="criticalQTY" Type="int" />
+    <Property Name="unitWeight" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Expirydate" Type="datetime" />
+    <Property Name="isDelete" Type="bit" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="supplier_id" Type="int" />
+    <Property Name="dateCreated" Type="datetime" />
+    <Property Name="updatedBy" Type="int" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ref_status">
+    <Key>
+      <PropertyRef Name="statusID" />
+    </Key>
+    <Property Name="statusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statusname" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ref_supplier">
+    <Key>
+      <PropertyRef Name="supplier_id" />
+    </Key>
+    <Property Name="supplier_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Supplier_name" Type="varchar" MaxLength="50" />
+    <Property Name="Supplier_address" Type="varchar" MaxLength="100" />
+    <Property Name="Supplier_contact" Type="varchar" MaxLength="50" />
+    <Property Name="isDelete" Type="bit" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ref_user">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="Fullname" Type="varchar" MaxLength="100" />
+    <Property Name="position" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="trn_customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" />
+    <Property Name="Middle" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="bBdate" Type="datetime" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+    <Property Name="TelNos" Type="varchar" MaxLength="50" />
+    <Property Name="cpno" Type="varchar" MaxLength="50" />
+    <Property Name="emailaddress" Type="varchar" MaxLength="50" />
+    <Property Name="datecreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="trn_PO_item">
+    <Key>
+      <PropertyRef Name="po_detail_id" />
+    </Key>
+    <Property Name="po_detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="po_id" Type="int" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="QTY" Type="int" />
+    <Property Name="Measurement" Type="varchar" MaxLength="50" />
+    <Property Name="Purchaseprice" Type="float" />
+    <Property Name="isCheckedIn" Type="bit" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="ReleasedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="trn_PORequest">
+    <Key>
+      <PropertyRef Name="po_id" />
+    </Key>
+    <Property Name="po_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="poRef" Type="varchar" MaxLength="50" />
+    <Property Name="TotalAmount" Type="float" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="Createdby" Type="int" />
+    <Property Name="isCompleted" Type="bit" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="trn_product_release">
+    <Key>
+      <PropertyRef Name="transactionlog_id" />
+    </Key>
+    <Property Name="transactionlog_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sales_detail_id" Type="int" />
+    <Property Name="sales_id" Type="int" />
+    <Property Name="releaseQTY" Type="int" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="trn_productDetail">
+    <Key>
+      <PropertyRef Name="product_detail_id" />
+    </Key>
+    <Property Name="product_detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="measurement" Type="varchar" MaxLength="50" />
+    <Property Name="measurevalue" Type="float" />
+    <Property Name="supplierprice" Type="float" />
+    <Property Name="retailprice" Type="float" />
+    <Property Name="QTY" Type="int" />
+    <Property Name="dateupdated" Type="datetime" />
+    <Property Name="datecreated" Type="datetime" />
+    <Property Name="updatedby" Type="int" />
+    <Property Name="isActive" Type="int" />
+    <Property Name="isDelete" Type="int" />
+    <Property Name="ExpiryDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="trn_transaction_log">
+    <Key>
+      <PropertyRef Name="statusLog_id" />
+    </Key>
+    <Property Name="statusLog_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sales_id" Type="int" />
+    <Property Name="current_status" Type="varchar" MaxLength="50" />
+    <Property Name="statusby" Type="varchar" MaxLength="50" />
+    <Property Name="DateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="trn_transactionSales">
+    <Key>
+      <PropertyRef Name="sales_id" />
+    </Key>
+    <Property Name="sales_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="referenceNo" Type="varchar" MaxLength="50" />
+    <Property Name="TotalAmount" Type="float" />
+    <Property Name="Discounted" Type="float" />
+    <Property Name="GrandTotal" Type="float" />
+    <Property Name="AmountPaid" Type="float" />
+    <Property Name="PayBalance" Type="float" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="isPaid" Type="bit" />
+    <Property Name="isVoided" Type="bit" />
+    <Property Name="TransactionType" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="payterms" Type="varchar" MaxLength="50" />
+    <Property Name="nosofdays" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="dateUpdated" Type="datetime" />
+    <Property Name="processed_by" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="trn_transactionSales_detail">
+    <Key>
+      <PropertyRef Name="sales_detail_id" />
+    </Key>
+    <Property Name="sales_detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productcode" Type="varchar" MaxLength="50" />
+    <Property Name="sales_id" Type="int" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="RetailPrice" Type="float" />
+    <Property Name="QTY" Type="int" />
+    <Property Name="TotalAmount" Type="float" />
+    <Property Name="isCheckedout" Type="bit" />
+  </EntityType>
+  <Function Name="customer_sales_date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="datefrom" Type="datetime" Mode="In" />
+    <Parameter Name="dateto" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="customer_sales_receipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ref_category_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="category_id" Type="int" Mode="In" />
+    <Parameter Name="categoryname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_category_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="category_id" Type="int" Mode="In" />
+    <Parameter Name="categoryname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_category_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_category_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="category_id" Type="int" Mode="In" />
+    <Parameter Name="categoryname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_measurement_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="measure_id" Type="int" Mode="In" />
+    <Parameter Name="measurement" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_measurement_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_product_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="category_id" Type="int" Mode="In" />
+    <Parameter Name="ProductCode" Type="varchar" Mode="In" />
+    <Parameter Name="ProductName" Type="varchar" Mode="In" />
+    <Parameter Name="ProductDescription" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="varchar" Mode="In" />
+    <Parameter Name="measurement" Type="varchar" Mode="In" />
+    <Parameter Name="supplierprice" Type="float" Mode="In" />
+    <Parameter Name="retailprice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="criticalQTY" Type="int" Mode="In" />
+    <Parameter Name="unitWeight" Type="varchar" Mode="In" />
+    <Parameter Name="Weight" Type="float" Mode="In" />
+    <Parameter Name="Expirydate" Type="datetime" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+    <Parameter Name="supplier_id" Type="int" Mode="In" />
+    <Parameter Name="dateCreated" Type="datetime" Mode="In" />
+    <Parameter Name="updatedBy" Type="int" Mode="In" />
+    <Parameter Name="dateUpdated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ref_product_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="category_id" Type="int" Mode="In" />
+    <Parameter Name="ProductCode" Type="varchar" Mode="In" />
+    <Parameter Name="ProductName" Type="varchar" Mode="In" />
+    <Parameter Name="ProductDescription" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="varchar" Mode="In" />
+    <Parameter Name="measurement" Type="varchar" Mode="In" />
+    <Parameter Name="supplierprice" Type="float" Mode="In" />
+    <Parameter Name="retailprice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="criticalQTY" Type="int" Mode="In" />
+    <Parameter Name="Expirydate" Type="datetime" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+    <Parameter Name="supplier_id" Type="int" Mode="In" />
+    <Parameter Name="dateCreated" Type="datetime" Mode="In" />
+    <Parameter Name="updatedBy" Type="int" Mode="In" />
+    <Parameter Name="dateUpdated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ref_product_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_product_SelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ref_product_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="category_id" Type="int" Mode="In" />
+    <Parameter Name="ProductCode" Type="varchar" Mode="In" />
+    <Parameter Name="ProductName" Type="varchar" Mode="In" />
+    <Parameter Name="ProductDescription" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Barcode" Type="varchar" Mode="In" />
+    <Parameter Name="measurement" Type="varchar" Mode="In" />
+    <Parameter Name="supplierprice" Type="float" Mode="In" />
+    <Parameter Name="retailprice" Type="float" Mode="In" />
+    <Parameter Name="criticalQTY" Type="int" Mode="In" />
+    <Parameter Name="unitWeight" Type="varchar" Mode="In" />
+    <Parameter Name="Weight" Type="float" Mode="In" />
+    <Parameter Name="Expirydate" Type="datetime" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+    <Parameter Name="supplier_id" Type="int" Mode="In" />
+    <Parameter Name="updatedBy" Type="int" Mode="In" />
+    <Parameter Name="dateUpdated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ref_product_Update_QTY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="updatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ref_status_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="statusname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_status_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_supplier_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Supplier_name" Type="varchar" Mode="In" />
+    <Parameter Name="Supplier_address" Type="varchar" Mode="In" />
+    <Parameter Name="Supplier_contact" Type="varchar" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="ref_supplier_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="supplier_id" Type="int" Mode="In" />
+    <Parameter Name="Supplier_name" Type="varchar" Mode="In" />
+    <Parameter Name="Supplier_address" Type="varchar" Mode="In" />
+    <Parameter Name="Supplier_contact" Type="varchar" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="ref_supplier_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_supplier_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="supplier_id" Type="int" Mode="In" />
+    <Parameter Name="Supplier_name" Type="varchar" Mode="In" />
+    <Parameter Name="Supplier_address" Type="varchar" Mode="In" />
+    <Parameter Name="Supplier_contact" Type="varchar" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="ref_user_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ref_user_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+    <Parameter Name="Fullname" Type="varchar" Mode="In" />
+    <Parameter Name="position" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_user_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_user_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+    <Parameter Name="Fullname" Type="varchar" Mode="In" />
+    <Parameter Name="position" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_user_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_user_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+    <Parameter Name="Fullname" Type="varchar" Mode="In" />
+    <Parameter Name="position" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_customer_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Firstname" Type="varchar" Mode="In" />
+    <Parameter Name="Lastname" Type="varchar" Mode="In" />
+    <Parameter Name="Middle" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+    <Parameter Name="bBdate" Type="datetime" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="TelNos" Type="varchar" Mode="In" />
+    <Parameter Name="cpno" Type="varchar" Mode="In" />
+    <Parameter Name="emailaddress" Type="varchar" Mode="In" />
+    <Parameter Name="datecreated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_customer_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customer_id" Type="int" Mode="In" />
+    <Parameter Name="Firstname" Type="varchar" Mode="In" />
+    <Parameter Name="Lastname" Type="varchar" Mode="In" />
+    <Parameter Name="Middle" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+    <Parameter Name="bBdate" Type="datetime" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="TelNos" Type="varchar" Mode="In" />
+    <Parameter Name="cpno" Type="varchar" Mode="In" />
+    <Parameter Name="emailaddress" Type="varchar" Mode="In" />
+    <Parameter Name="datecreated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_customer_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="trn_customer_SelectbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Customer_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_customer_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customer_id" Type="int" Mode="In" />
+    <Parameter Name="Firstname" Type="varchar" Mode="In" />
+    <Parameter Name="Lastname" Type="varchar" Mode="In" />
+    <Parameter Name="Middle" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+    <Parameter Name="bBdate" Type="datetime" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="Country" Type="varchar" Mode="In" />
+    <Parameter Name="TelNos" Type="varchar" Mode="In" />
+    <Parameter Name="cpno" Type="varchar" Mode="In" />
+    <Parameter Name="emailaddress" Type="varchar" Mode="In" />
+    <Parameter Name="datecreated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_Checkedin_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_Checkedin_List_by_date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+    <Parameter Name="datefrom" Type="datetime" Mode="In" />
+    <Parameter Name="dateto" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_Checkedin_List_byBarcode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Barcode" Type="varchar" Mode="In" />
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+    <Parameter Name="po_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="Measurement" Type="varchar" Mode="In" />
+    <Parameter Name="Purchaseprice" Type="float" Mode="In" />
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+    <Parameter Name="DateUpdate" Type="datetime" Mode="In" />
+    <Parameter Name="ReleasedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_List_bystatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_List_exists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_List_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_List_select_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datefrom" Type="datetime" Mode="In" />
+    <Parameter Name="dateto" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_Remove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_detail_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_detail_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="Measurement" Type="varchar" Mode="In" />
+    <Parameter Name="Purchaseprice" Type="float" Mode="In" />
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+    <Parameter Name="DateUpdate" Type="datetime" Mode="In" />
+    <Parameter Name="ReleasedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_po_item_Update_status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_detail_id" Type="int" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="isCheckedIn" Type="bit" Mode="In" />
+    <Parameter Name="DateUpdate" Type="datetime" Mode="In" />
+    <Parameter Name="ReleasedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_porequest_GetId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="poRef" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_porequest_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="poRef" Type="varchar" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="DateCreated" Type="datetime" Mode="In" />
+    <Parameter Name="Createdby" Type="int" Mode="In" />
+    <Parameter Name="isCompleted" Type="bit" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_PORequest_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+    <Parameter Name="poRef" Type="varchar" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="DateCreated" Type="datetime" Mode="In" />
+    <Parameter Name="Createdby" Type="int" Mode="In" />
+    <Parameter Name="isCompleted" Type="bit" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="datefrom" Type="datetime" Mode="In" />
+    <Parameter Name="dateto" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_porequest_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="trn_porequest_Update_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+  </Function>
+  <Function Name="trn_porequest_Update_status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="po_id" Type="int" Mode="In" />
+    <Parameter Name="isCompleted" Type="bit" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_product_release_exists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="sales_detail_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_product_release_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_detail_id" Type="int" Mode="In" />
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="releaseQTY" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_product_release_removed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transactionlog_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_product_release_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_product_release_update_qty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="transactionlog_id" Type="int" Mode="In" />
+    <Parameter Name="releaseQTY" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="trn_productdetail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_detail_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="measurement" Type="varchar" Mode="In" />
+    <Parameter Name="measurevalue" Type="float" Mode="In" />
+    <Parameter Name="supplierprice" Type="float" Mode="In" />
+    <Parameter Name="retailprice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="dateupdated" Type="datetime" Mode="In" />
+    <Parameter Name="datecreated" Type="datetime" Mode="In" />
+    <Parameter Name="updatedby" Type="int" Mode="In" />
+    <Parameter Name="isActive" Type="int" Mode="In" />
+    <Parameter Name="isDelete" Type="int" Mode="In" />
+    <Parameter Name="ExpiryDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_productDetail_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_detail_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="measurement" Type="varchar" Mode="In" />
+    <Parameter Name="measurevalue" Type="float" Mode="In" />
+    <Parameter Name="supplierprice" Type="float" Mode="In" />
+    <Parameter Name="retailprice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="dateupdated" Type="datetime" Mode="In" />
+    <Parameter Name="datecreated" Type="datetime" Mode="In" />
+    <Parameter Name="updatedby" Type="int" Mode="In" />
+    <Parameter Name="isActive" Type="int" Mode="In" />
+    <Parameter Name="isDelete" Type="int" Mode="In" />
+    <Parameter Name="ExpiryDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_productdetail_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="trn_productdetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_detail_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="measurement" Type="varchar" Mode="In" />
+    <Parameter Name="measurevalue" Type="float" Mode="In" />
+    <Parameter Name="supplierprice" Type="float" Mode="In" />
+    <Parameter Name="retailprice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="dateupdated" Type="datetime" Mode="In" />
+    <Parameter Name="datecreated" Type="datetime" Mode="In" />
+    <Parameter Name="updatedby" Type="int" Mode="In" />
+    <Parameter Name="isActive" Type="int" Mode="In" />
+    <Parameter Name="isDelete" Type="int" Mode="In" />
+    <Parameter Name="ExpiryDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_stock_qty_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="updatedBy" Type="int" Mode="In" />
+    <Parameter Name="command" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_transaction_log_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="current_status" Type="varchar" Mode="In" />
+    <Parameter Name="statusby" Type="varchar" Mode="In" />
+    <Parameter Name="DateUpdated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_transaction_log_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="statusLog_id" Type="int" Mode="In" />
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="current_status" Type="varchar" Mode="In" />
+    <Parameter Name="statusby" Type="varchar" Mode="In" />
+    <Parameter Name="DateUpdated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_transaction_log_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="trn_transactionsales_detail_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_detail_id" Type="int" Mode="In" />
+    <Parameter Name="updater" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_detail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productcode" Type="varchar" Mode="In" />
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="RetailPrice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="isCheckedout" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_detail_isallrelease" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="isCheckout" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_detail_release" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="barcode" Type="varchar" Mode="In" />
+    <Parameter Name="isCheckout" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_detail_releasing_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_detail_id" Type="int" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="isCheckedout" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_detail_remove_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_detail_id" Type="int" Mode="In" />
+    <Parameter Name="isCheckedout" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionSales_detail_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_detail_id" Type="int" Mode="In" />
+    <Parameter Name="productcode" Type="varchar" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="RetailPrice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="isCheckedout" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_detail_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="trn_transactionsales_detail_Selectbysales_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_detail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_detail_id" Type="int" Mode="In" />
+    <Parameter Name="productcode" Type="varchar" Mode="In" />
+    <Parameter Name="product_id" Type="int" Mode="In" />
+    <Parameter Name="RetailPrice" Type="float" Mode="In" />
+    <Parameter Name="QTY" Type="int" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="isCheckedout" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="referenceNo" Type="varchar" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="Discounted" Type="float" Mode="In" />
+    <Parameter Name="GrandTotal" Type="float" Mode="In" />
+    <Parameter Name="AmountPaid" Type="float" Mode="In" />
+    <Parameter Name="PayBalance" Type="float" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="isPaid" Type="bit" Mode="In" />
+    <Parameter Name="isVoided" Type="bit" Mode="In" />
+    <Parameter Name="TransactionType" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerId" Type="int" Mode="In" />
+    <Parameter Name="DateCreated" Type="datetime" Mode="In" />
+    <Parameter Name="dateUpdated" Type="datetime" Mode="In" />
+    <Parameter Name="processed_by" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_product_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="barcode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_product_details_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_product_details_select_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datefrom" Type="datetime" Mode="In" />
+    <Parameter Name="dateto" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_product_details_select_bydate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="datefrom" Type="datetime" Mode="In" />
+    <Parameter Name="dateto" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionSales_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="referenceNo" Type="varchar" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="Discounted" Type="float" Mode="In" />
+    <Parameter Name="GrandTotal" Type="float" Mode="In" />
+    <Parameter Name="PayBalance" Type="float" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="isPaid" Type="bit" Mode="In" />
+    <Parameter Name="isVoided" Type="bit" Mode="In" />
+    <Parameter Name="CustomerId" Type="int" Mode="In" />
+    <Parameter Name="DateCreated" Type="datetime" Mode="In" />
+    <Parameter Name="dateUpdated" Type="datetime" Mode="In" />
+    <Parameter Name="processed_by" Type="varchar" Mode="In" />
+    <Parameter Name="datefrom" Type="datetime" Mode="In" />
+    <Parameter Name="dateto" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="trn_transactionsales_SelectbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_Selectrefno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="referenceNo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="referenceNo" Type="varchar" Mode="In" />
+    <Parameter Name="TotalAmount" Type="float" Mode="In" />
+    <Parameter Name="Discounted" Type="float" Mode="In" />
+    <Parameter Name="GrandTotal" Type="float" Mode="In" />
+    <Parameter Name="AmountPaid" Type="float" Mode="In" />
+    <Parameter Name="PayBalance" Type="float" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="isPaid" Type="bit" Mode="In" />
+    <Parameter Name="isVoided" Type="bit" Mode="In" />
+    <Parameter Name="TransactionType" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerId" Type="int" Mode="In" />
+    <Parameter Name="payterms" Type="varchar" Mode="In" />
+    <Parameter Name="nosofdays" Type="int" Mode="In" />
+    <Parameter Name="dateUpdated" Type="datetime" Mode="In" />
+    <Parameter Name="processed_by" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_Update_status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="processed_by" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="trn_transactionsales_void_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sales_id" Type="int" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="isPaid" Type="bit" Mode="In" />
+    <Parameter Name="isVoided" Type="bit" Mode="In" />
+    <Parameter Name="processed_by" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="POInventoryModelStoreContainer">
+    <EntitySet Name="ref_access" EntityType="Self.ref_access" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_category" EntityType="Self.ref_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_measurement" EntityType="Self.ref_measurement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_module" EntityType="Self.ref_module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_product" EntityType="Self.ref_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_status" EntityType="Self.ref_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_supplier" EntityType="Self.ref_supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_user" EntityType="Self.ref_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_customer" EntityType="Self.trn_customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_PO_item" EntityType="Self.trn_PO_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_PORequest" EntityType="Self.trn_PORequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_product_release" EntityType="Self.trn_product_release" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_productDetail" EntityType="Self.trn_productDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_transaction_log" EntityType="Self.trn_transaction_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_transactionSales" EntityType="Self.trn_transactionSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trn_transactionSales_detail" EntityType="Self.trn_transactionSales_detail" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

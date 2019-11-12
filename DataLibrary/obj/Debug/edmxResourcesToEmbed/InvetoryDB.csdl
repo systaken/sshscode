@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POInventoryModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="ref_access">
+    <Key>
+      <PropertyRef Name="access_id" />
+    </Key>
+    <Property Name="access_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="module_id" Type="Int32" />
+    <Property Name="hasAccess" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ref_category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ref_module">
+    <Key>
+      <PropertyRef Name="module_id" />
+    </Key>
+    <Property Name="module_id" Type="Int32" Nullable="false" />
+    <Property Name="moduleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ref_product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_id" Type="Int32" />
+    <Property Name="ProductCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="supplierprice" Type="Double" />
+    <Property Name="retailprice" Type="Double" />
+    <Property Name="QTY" Type="Int32" />
+    <Property Name="isDelete" Type="Boolean" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="dateCreated" Type="DateTime" Precision="3" />
+    <Property Name="updatedBy" Type="Int32" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="criticalQTY" Type="Int32" />
+    <Property Name="Expirydate" Type="DateTime" Precision="3" />
+    <Property Name="supplier_id" Type="Int32" />
+    <Property Name="unitWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="Double" />
+  </EntityType>
+  <EntityType Name="ref_status">
+    <Key>
+      <PropertyRef Name="statusID" />
+    </Key>
+    <Property Name="statusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statusname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ref_user">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="trn_productDetail">
+    <Key>
+      <PropertyRef Name="product_detail_id" />
+    </Key>
+    <Property Name="product_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="measurevalue" Type="Double" />
+    <Property Name="supplierprice" Type="Double" />
+    <Property Name="retailprice" Type="Double" />
+    <Property Name="QTY" Type="Int32" />
+    <Property Name="dateupdated" Type="DateTime" Precision="3" />
+    <Property Name="datecreated" Type="DateTime" Precision="3" />
+    <Property Name="updatedby" Type="Int32" />
+    <Property Name="isActive" Type="Int32" />
+    <Property Name="isDelete" Type="Int32" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="trn_transaction_log">
+    <Key>
+      <PropertyRef Name="statusLog_id" />
+    </Key>
+    <Property Name="statusLog_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sales_id" Type="Int32" />
+    <Property Name="current_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="statusby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="trn_transactionSales_detail">
+    <Key>
+      <PropertyRef Name="sales_detail_id" />
+    </Key>
+    <Property Name="sales_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="RetailPrice" Type="Double" />
+    <Property Name="QTY" Type="Int32" />
+    <Property Name="TotalAmount" Type="Double" />
+    <Property Name="isCheckedout" Type="Boolean" />
+    <Property Name="sales_id" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="POInventoryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ref_access" EntityType="Self.ref_access" />
+    <EntitySet Name="ref_category" EntityType="Self.ref_category" />
+    <EntitySet Name="ref_module" EntityType="Self.ref_module" />
+    <EntitySet Name="ref_product" EntityType="Self.ref_product" />
+    <EntitySet Name="ref_status" EntityType="Self.ref_status" />
+    <EntitySet Name="ref_user" EntityType="Self.ref_user" />
+    <EntitySet Name="trn_productDetail" EntityType="Self.trn_productDetail" />
+    <EntitySet Name="trn_transaction_log" EntityType="Self.trn_transaction_log" />
+    <EntitySet Name="trn_transactionSales_detail" EntityType="Self.trn_transactionSales_detail" />
+    <FunctionImport Name="ref_category_Insert">
+      <Parameter Name="category_id" Mode="In" Type="Int32" />
+      <Parameter Name="categoryname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_category_Search" ReturnType="Collection(POInventoryModel.ref_category_Search_Result)">
+      <Parameter Name="category_id" Mode="In" Type="Int32" />
+      <Parameter Name="categoryname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_category_SelectAll" ReturnType="Collection(POInventoryModel.ref_category_SelectAll_Result)" />
+    <FunctionImport Name="ref_category_Update">
+      <Parameter Name="category_id" Mode="In" Type="Int32" />
+      <Parameter Name="categoryname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_product_SelectAll" ReturnType="Collection(POInventoryModel.ref_product_SelectAll_Result)" />
+    <FunctionImport Name="ref_user_Insert">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+      <Parameter Name="Fullname" Mode="In" Type="String" />
+      <Parameter Name="position" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_user_Search" ReturnType="Collection(POInventoryModel.ref_user_Search_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+      <Parameter Name="Fullname" Mode="In" Type="String" />
+      <Parameter Name="position" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_user_SelectAll" ReturnType="Collection(POInventoryModel.ref_user_SelectAll_Result)" />
+    <FunctionImport Name="ref_user_Update">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+      <Parameter Name="Fullname" Mode="In" Type="String" />
+      <Parameter Name="position" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_productdetail_Insert">
+      <Parameter Name="product_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="measurement" Mode="In" Type="String" />
+      <Parameter Name="measurevalue" Mode="In" Type="Double" />
+      <Parameter Name="supplierprice" Mode="In" Type="Double" />
+      <Parameter Name="retailprice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="dateupdated" Mode="In" Type="DateTime" />
+      <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+      <Parameter Name="updatedby" Mode="In" Type="Int32" />
+      <Parameter Name="isActive" Mode="In" Type="Int32" />
+      <Parameter Name="isDelete" Mode="In" Type="Int32" />
+      <Parameter Name="ExpiryDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_productDetail_Search" ReturnType="Collection(POInventoryModel.trn_productDetail_Search_Result)">
+      <Parameter Name="product_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="measurement" Mode="In" Type="String" />
+      <Parameter Name="measurevalue" Mode="In" Type="Double" />
+      <Parameter Name="supplierprice" Mode="In" Type="Double" />
+      <Parameter Name="retailprice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="dateupdated" Mode="In" Type="DateTime" />
+      <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+      <Parameter Name="updatedby" Mode="In" Type="Int32" />
+      <Parameter Name="isActive" Mode="In" Type="Int32" />
+      <Parameter Name="isDelete" Mode="In" Type="Int32" />
+      <Parameter Name="ExpiryDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_productdetail_SelectAll" ReturnType="Collection(POInventoryModel.trn_productdetail_SelectAll_Result)" />
+    <FunctionImport Name="trn_productdetail_Update">
+      <Parameter Name="product_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="measurement" Mode="In" Type="String" />
+      <Parameter Name="measurevalue" Mode="In" Type="Double" />
+      <Parameter Name="supplierprice" Mode="In" Type="Double" />
+      <Parameter Name="retailprice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="dateupdated" Mode="In" Type="DateTime" />
+      <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+      <Parameter Name="updatedby" Mode="In" Type="Int32" />
+      <Parameter Name="isActive" Mode="In" Type="Int32" />
+      <Parameter Name="isDelete" Mode="In" Type="Int32" />
+      <Parameter Name="ExpiryDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="trn_customer" EntityType="POInventoryModel.trn_customer" />
+    <FunctionImport Name="ref_status_Insert">
+      <Parameter Name="statusname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_status_SelectAll" ReturnType="Collection(POInventoryModel.ref_status_SelectAll_Result)" />
+    <FunctionImport Name="trn_customer_Insert" ReturnType="Collection(POInventoryModel.idResult)">
+      <Parameter Name="Firstname" Mode="In" Type="String" />
+      <Parameter Name="Lastname" Mode="In" Type="String" />
+      <Parameter Name="Middle" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="bBdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="TelNos" Mode="In" Type="String" />
+      <Parameter Name="cpno" Mode="In" Type="String" />
+      <Parameter Name="emailaddress" Mode="In" Type="String" />
+      <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_customer_Search" ReturnType="Collection(POInventoryModel.trn_customer_Search_Result)">
+      <Parameter Name="customer_id" Mode="In" Type="Int32" />
+      <Parameter Name="Firstname" Mode="In" Type="String" />
+      <Parameter Name="Lastname" Mode="In" Type="String" />
+      <Parameter Name="Middle" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="bBdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="TelNos" Mode="In" Type="String" />
+      <Parameter Name="cpno" Mode="In" Type="String" />
+      <Parameter Name="emailaddress" Mode="In" Type="String" />
+      <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_customer_SelectAll" ReturnType="Collection(POInventoryModel.trn_customer_SelectAll_Result)" />
+    <FunctionImport Name="trn_customer_Update">
+      <Parameter Name="customer_id" Mode="In" Type="Int32" />
+      <Parameter Name="Firstname" Mode="In" Type="String" />
+      <Parameter Name="Lastname" Mode="In" Type="String" />
+      <Parameter Name="Middle" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="bBdate" Mode="In" Type="DateTime" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="TelNos" Mode="In" Type="String" />
+      <Parameter Name="cpno" Mode="In" Type="String" />
+      <Parameter Name="emailaddress" Mode="In" Type="String" />
+      <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transaction_log_Insert">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="current_status" Mode="In" Type="String" />
+      <Parameter Name="statusby" Mode="In" Type="String" />
+      <Parameter Name="DateUpdated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transaction_log_Search" ReturnType="Collection(POInventoryModel.trn_transaction_log_Search_Result)">
+      <Parameter Name="statusLog_id" Mode="In" Type="Int32" />
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="current_status" Mode="In" Type="String" />
+      <Parameter Name="statusby" Mode="In" Type="String" />
+      <Parameter Name="DateUpdated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transaction_log_SelectAll" ReturnType="Collection(POInventoryModel.trn_transaction_log_SelectAll_Result)" />
+    <FunctionImport Name="trn_transactionsales_detail_Insert">
+      <Parameter Name="productcode" Mode="In" Type="String" />
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="RetailPrice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="isCheckedout" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionSales_detail_Search" ReturnType="Collection(POInventoryModel.trn_transactionSales_detail_Search_Result)">
+      <Parameter Name="sales_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="productcode" Mode="In" Type="String" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="RetailPrice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="isCheckedout" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_detail_SelectAll" ReturnType="Collection(POInventoryModel.trn_transactionsales_detail_SelectAll_Result)" />
+    <FunctionImport Name="trn_transactionsales_detail_Update">
+      <Parameter Name="sales_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="productcode" Mode="In" Type="String" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="RetailPrice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="isCheckedout" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_Insert">
+      <Parameter Name="referenceNo" Mode="In" Type="String" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="Discounted" Mode="In" Type="Double" />
+      <Parameter Name="GrandTotal" Mode="In" Type="Double" />
+      <Parameter Name="AmountPaid" Mode="In" Type="Double" />
+      <Parameter Name="PayBalance" Mode="In" Type="Double" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="isPaid" Mode="In" Type="Boolean" />
+      <Parameter Name="isVoided" Mode="In" Type="Boolean" />
+      <Parameter Name="TransactionType" Mode="In" Type="String" />
+      <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="dateUpdated" Mode="In" Type="DateTime" />
+      <Parameter Name="processed_by" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionSales_Search" ReturnType="Collection(POInventoryModel.trn_transactionSales_Search_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="referenceNo" Mode="In" Type="String" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="Discounted" Mode="In" Type="Double" />
+      <Parameter Name="GrandTotal" Mode="In" Type="Double" />
+      <Parameter Name="PayBalance" Mode="In" Type="Double" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="isPaid" Mode="In" Type="Boolean" />
+      <Parameter Name="isVoided" Mode="In" Type="Boolean" />
+      <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="dateUpdated" Mode="In" Type="DateTime" />
+      <Parameter Name="processed_by" Mode="In" Type="String" />
+      <Parameter Name="datefrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dateto" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_SelectAll" ReturnType="Collection(POInventoryModel.trn_transactionsales_SelectAll_Result)" />
+    <FunctionImport Name="trn_transactionsales_Update">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="referenceNo" Mode="In" Type="String" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="Discounted" Mode="In" Type="Double" />
+      <Parameter Name="GrandTotal" Mode="In" Type="Double" />
+      <Parameter Name="AmountPaid" Mode="In" Type="Double" />
+      <Parameter Name="PayBalance" Mode="In" Type="Double" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="isPaid" Mode="In" Type="Boolean" />
+      <Parameter Name="isVoided" Mode="In" Type="Boolean" />
+      <Parameter Name="TransactionType" Mode="In" Type="String" />
+      <Parameter Name="CustomerId" Mode="In" Type="Int32" />
+      <Parameter Name="payterms" Mode="In" Type="String" />
+      <Parameter Name="nosofdays" Mode="In" Type="Int32" />
+      <Parameter Name="dateUpdated" Mode="In" Type="DateTime" />
+      <Parameter Name="processed_by" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="trn_transactionSales" EntityType="POInventoryModel.trn_transactionSales" />
+    <FunctionImport Name="trn_transactionsales_detail_Delete">
+      <Parameter Name="sales_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="updater" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ref_product_Insert">
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="category_id" Mode="In" Type="Int32" />
+      <Parameter Name="ProductCode" Mode="In" Type="String" />
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="ProductDescription" Mode="In" Type="String" />
+      <Parameter Name="Barcode" Mode="In" Type="String" />
+      <Parameter Name="measurement" Mode="In" Type="String" />
+      <Parameter Name="supplierprice" Mode="In" Type="Double" />
+      <Parameter Name="retailprice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="criticalQTY" Mode="In" Type="Int32" />
+      <Parameter Name="unitWeight" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="Double" />
+      <Parameter Name="Expirydate" Mode="In" Type="DateTime" />
+      <Parameter Name="isDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+      <Parameter Name="supplier_id" Mode="In" Type="Int32" />
+      <Parameter Name="dateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="updatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="dateUpdated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ref_product_Search" ReturnType="Collection(POInventoryModel.ref_product_Search_Result1)">
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="category_id" Mode="In" Type="Int32" />
+      <Parameter Name="ProductCode" Mode="In" Type="String" />
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="ProductDescription" Mode="In" Type="String" />
+      <Parameter Name="Barcode" Mode="In" Type="String" />
+      <Parameter Name="measurement" Mode="In" Type="String" />
+      <Parameter Name="supplierprice" Mode="In" Type="Double" />
+      <Parameter Name="retailprice" Mode="In" Type="Double" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="criticalQTY" Mode="In" Type="Int32" />
+      <Parameter Name="Expirydate" Mode="In" Type="DateTime" />
+      <Parameter Name="isDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+      <Parameter Name="supplier_id" Mode="In" Type="Int32" />
+      <Parameter Name="dateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="updatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="dateUpdated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ref_product_Update">
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="category_id" Mode="In" Type="Int32" />
+      <Parameter Name="ProductCode" Mode="In" Type="String" />
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="ProductDescription" Mode="In" Type="String" />
+      <Parameter Name="Barcode" Mode="In" Type="String" />
+      <Parameter Name="measurement" Mode="In" Type="String" />
+      <Parameter Name="supplierprice" Mode="In" Type="Double" />
+      <Parameter Name="retailprice" Mode="In" Type="Double" />
+      <Parameter Name="criticalQTY" Mode="In" Type="Int32" />
+      <Parameter Name="unitWeight" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="Double" />
+      <Parameter Name="Expirydate" Mode="In" Type="DateTime" />
+      <Parameter Name="isDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+      <Parameter Name="supplier_id" Mode="In" Type="Int32" />
+      <Parameter Name="updatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="dateUpdated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ref_product_SelectById" ReturnType="Collection(POInventoryModel.ref_product_SelectById_Result)">
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ref_supplier" EntityType="POInventoryModel.ref_supplier" />
+    <FunctionImport Name="ref_supplier_Insert">
+      <Parameter Name="Supplier_name" Mode="In" Type="String" />
+      <Parameter Name="Supplier_address" Mode="In" Type="String" />
+      <Parameter Name="Supplier_contact" Mode="In" Type="String" />
+      <Parameter Name="isDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ref_supplier_Search" ReturnType="Collection(POInventoryModel.ref_supplier_Search_Result)">
+      <Parameter Name="supplier_id" Mode="In" Type="Int32" />
+      <Parameter Name="Supplier_name" Mode="In" Type="String" />
+      <Parameter Name="Supplier_address" Mode="In" Type="String" />
+      <Parameter Name="Supplier_contact" Mode="In" Type="String" />
+      <Parameter Name="isDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ref_supplier_SelectAll" ReturnType="Collection(POInventoryModel.ref_supplier_SelectAll_Result)" />
+    <FunctionImport Name="ref_supplier_Update">
+      <Parameter Name="supplier_id" Mode="In" Type="Int32" />
+      <Parameter Name="Supplier_name" Mode="In" Type="String" />
+      <Parameter Name="Supplier_address" Mode="In" Type="String" />
+      <Parameter Name="Supplier_contact" Mode="In" Type="String" />
+      <Parameter Name="isDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="ref_measurement" EntityType="POInventoryModel.ref_measurement" />
+    <FunctionImport Name="ref_measurement_Insert">
+      <Parameter Name="measure_id" Mode="In" Type="Int32" />
+      <Parameter Name="measurement" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_measurement_SelectAll" ReturnType="Collection(POInventoryModel.ref_measurement_SelectAll_Result)" />
+    <FunctionImport Name="trn_customer_SelectbyId" ReturnType="Collection(POInventoryModel.trn_customer_SelectbyId_Result)">
+      <Parameter Name="Customer_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_SelectbyId" ReturnType="Collection(POInventoryModel.trn_transactionsales_SelectbyId_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_Selectrefno" ReturnType="Collection(POInventoryModel.trn_transactionsales_Selectrefno_Result)">
+      <Parameter Name="referenceNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ref_user_Delete">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ref_user_Login" ReturnType="Collection(POInventoryModel.ref_user_Login_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_detail_Selectbysales_id" ReturnType="Collection(POInventoryModel.trn_transactionsales_detail_Selectbysales_id_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_detail_release" ReturnType="Collection(POInventoryModel.trn_transactionsales_detail_release_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="barcode" Mode="In" Type="String" />
+      <Parameter Name="isCheckout" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_detail_releasing_update">
+      <Parameter Name="sales_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="isCheckedout" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_void_update">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="isPaid" Mode="In" Type="Boolean" />
+      <Parameter Name="isVoided" Mode="In" Type="Boolean" />
+      <Parameter Name="processed_by" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_product_release_Insert">
+      <Parameter Name="sales_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="releaseQTY" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_product_release_removed">
+      <Parameter Name="transactionlog_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_product_release_SelectAll" ReturnType="Collection(POInventoryModel.trn_product_release_SelectAll_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_product_release_update_qty">
+      <Parameter Name="transactionlog_id" Mode="In" Type="Int32" />
+      <Parameter Name="releaseQTY" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_product_details" ReturnType="Collection(POInventoryModel.trn_transactionsales_product_details_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="barcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="trn_product_release" EntityType="POInventoryModel.trn_product_release" />
+    <FunctionImport Name="trn_transactionsales_detail_remove_update">
+      <Parameter Name="sales_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="isCheckedout" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_product_release_exists" ReturnType="Collection(POInventoryModel.trn_product_release_exists_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="sales_detail_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_detail_isallrelease" ReturnType="Collection(POInventoryModel.trn_transactionsales_detail_isallrelease_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="isCheckout" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_Update_status">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="processed_by" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_stock_qty_update">
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="updatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="command" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="trn_PO_item" EntityType="POInventoryModel.trn_PO_item" />
+    <FunctionImport Name="trn_po_item_Checkedin_List" ReturnType="Collection(POInventoryModel.trn_po_item_Checkedin_List_Result)">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_Insert">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="Measurement" Mode="In" Type="String" />
+      <Parameter Name="Purchaseprice" Mode="In" Type="Double" />
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+      <Parameter Name="DateUpdate" Mode="In" Type="DateTime" />
+      <Parameter Name="ReleasedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_List" ReturnType="Collection(POInventoryModel.trn_po_item_List_Result)">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_Remove">
+      <Parameter Name="po_detail_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_Update">
+      <Parameter Name="po_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="Measurement" Mode="In" Type="String" />
+      <Parameter Name="Purchaseprice" Mode="In" Type="Double" />
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+      <Parameter Name="DateUpdate" Mode="In" Type="DateTime" />
+      <Parameter Name="ReleasedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_Update_status">
+      <Parameter Name="po_detail_id" Mode="In" Type="Int32" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+      <Parameter Name="DateUpdate" Mode="In" Type="DateTime" />
+      <Parameter Name="ReleasedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_porequest_GetId" ReturnType="Collection(Int32)">
+      <Parameter Name="poRef" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_porequest_Insert">
+      <Parameter Name="poRef" Mode="In" Type="String" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="Createdby" Mode="In" Type="Int32" />
+      <Parameter Name="isCompleted" Mode="In" Type="Boolean" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="trn_porequest_SelectAll" ReturnType="Collection(POInventoryModel.trn_porequest_SelectAll_Result)" />
+    <FunctionImport Name="trn_porequest_Update_amount">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="trn_porequest_Update_status">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+      <Parameter Name="isCompleted" Mode="In" Type="Boolean" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="trn_PORequest" EntityType="POInventoryModel.trn_PORequest" />
+    <FunctionImport Name="trn_po_item_List_bystatus" ReturnType="Collection(POInventoryModel.trn_po_item_List_bystatus_Result)">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_Checkedin_List_byBarcode" ReturnType="Collection(POInventoryModel.trn_po_item_Checkedin_List_byBarcode_Result)">
+      <Parameter Name="Barcode" Mode="In" Type="String" />
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_List_exists" ReturnType="Collection(POInventoryModel.trn_po_item_List_exists_Result)">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ref_product_Update_QTY">
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="QTY" Mode="In" Type="Int32" />
+      <Parameter Name="updatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_PORequest_Search" ReturnType="Collection(POInventoryModel.trn_PORequest_Search_Result)">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+      <Parameter Name="poRef" Mode="In" Type="String" />
+      <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="Createdby" Mode="In" Type="Int32" />
+      <Parameter Name="isCompleted" Mode="In" Type="Boolean" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="datefrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dateto" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="customer_sales_date" ReturnType="Collection(POInventoryModel.customer_sales_date_Result)">
+      <Parameter Name="datefrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dateto" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_product_details_select" ReturnType="Collection(POInventoryModel.trn_transactionsales_product_details_select_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_List_select" ReturnType="Collection(POInventoryModel.trn_po_item_List_select_Result)">
+      <Parameter Name="po_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_List_select_all" ReturnType="Collection(POInventoryModel.trn_po_item_List_select_all_Result)">
+      <Parameter Name="Datefrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dateto" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_product_details_select_all" ReturnType="Collection(POInventoryModel.trn_transactionsales_product_details_select_all_Result)">
+      <Parameter Name="Datefrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dateto" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_po_item_Checkedin_List_by_date" ReturnType="Collection(POInventoryModel.trn_po_item_Checkedin_List_by_date_Result)">
+      <Parameter Name="isCheckedIn" Mode="In" Type="Boolean" />
+      <Parameter Name="datefrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dateto" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="trn_transactionsales_product_details_select_bydate" ReturnType="Collection(POInventoryModel.trn_transactionsales_product_details_select_bydate_Result)">
+      <Parameter Name="datefrom" Mode="In" Type="DateTime" />
+      <Parameter Name="dateto" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="customer_sales_receipt" ReturnType="Collection(POInventoryModel.customer_sales_receipt_Result)">
+      <Parameter Name="sales_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ref_category_Search_Result">
+    <Property Type="Int32" Name="category_id" Nullable="false" />
+    <Property Type="String" Name="categoryname" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ref_category_SelectAll_Result">
+    <Property Type="Int32" Name="category_id" Nullable="false" />
+    <Property Type="String" Name="categoryname" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ref_product_Search_Result">
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="Int32" Name="category_id" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="supplierprice" Nullable="true" />
+    <Property Type="Double" Name="retailprice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="updatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="ref_product_SelectAll_Result">
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="Int32" Name="category_id" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="supplierprice" Nullable="true" />
+    <Property Type="Double" Name="retailprice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="updatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="criticalQTY" Nullable="true" />
+    <Property Type="DateTime" Name="Expirydate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="supplier_id" Nullable="true" />
+    <Property Type="String" Name="unitWeight" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Weight" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ref_user_Search_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="String" Name="Fullname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="position" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="ref_user_SelectAll_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="String" Name="Fullname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="position" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="trn_productDetail_Search_Result">
+    <Property Type="Int32" Name="product_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="measurevalue" Nullable="true" />
+    <Property Type="Double" Name="supplierprice" Nullable="true" />
+    <Property Type="Double" Name="retailprice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="DateTime" Name="dateupdated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="updatedby" Nullable="true" />
+    <Property Type="Int32" Name="isActive" Nullable="true" />
+    <Property Type="Int32" Name="isDelete" Nullable="true" />
+    <Property Type="DateTime" Name="ExpiryDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="trn_productdetail_SelectAll_Result">
+    <Property Type="Int32" Name="product_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="measurevalue" Nullable="true" />
+    <Property Type="Double" Name="supplierprice" Nullable="true" />
+    <Property Type="Double" Name="retailprice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="DateTime" Name="dateupdated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="updatedby" Nullable="true" />
+    <Property Type="Int32" Name="isActive" Nullable="true" />
+    <Property Type="Int32" Name="isDelete" Nullable="true" />
+    <Property Type="DateTime" Name="ExpiryDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="trn_customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Middle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bBdate" Type="DateTime" Precision="3" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TelNos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cpno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="emailaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="datecreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="ref_status_SelectAll_Result">
+    <Property Type="Int32" Name="statusID" Nullable="false" />
+    <Property Type="String" Name="statusname" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_customer_Search_Result">
+    <Property Type="Int32" Name="customer_id" Nullable="false" />
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Middle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="bBdate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TelNos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cpno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="emailaddress" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="trn_customer_SelectAll_Result">
+    <Property Type="Int32" Name="customer_id" Nullable="false" />
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Middle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="bBdate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TelNos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cpno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="emailaddress" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="trn_transaction_log_Search_Result">
+    <Property Type="Int32" Name="statusLog_id" Nullable="false" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="String" Name="current_status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="statusby" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="trn_transaction_log_SelectAll_Result">
+    <Property Type="Int32" Name="statusLog_id" Nullable="false" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="String" Name="current_status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="statusby" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionSales_detail_Search_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_detail_SelectAll_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionSales_Search_Result">
+    <Property Type="Int32" Name="sales_id" Nullable="false" />
+    <Property Type="String" Name="referenceNo" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Double" Name="Discounted" Nullable="true" />
+    <Property Type="Double" Name="GrandTotal" Nullable="true" />
+    <Property Type="Double" Name="PayBalance" Nullable="true" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isPaid" Nullable="true" />
+    <Property Type="Boolean" Name="isVoided" Nullable="true" />
+    <Property Type="Int32" Name="CustomerId" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="processed_by" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="AmountPaid" Nullable="true" />
+    <Property Type="String" Name="TransactionType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="payterms" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="nosofdays" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_SelectAll_Result">
+    <Property Type="Int32" Name="sales_id" Nullable="false" />
+    <Property Type="String" Name="referenceNo" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Double" Name="Discounted" Nullable="true" />
+    <Property Type="Double" Name="GrandTotal" Nullable="true" />
+    <Property Type="Double" Name="PayBalance" Nullable="true" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isPaid" Nullable="true" />
+    <Property Type="Boolean" Name="isVoided" Nullable="true" />
+    <Property Type="Int32" Name="CustomerId" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="processed_by" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="AmountPaid" Nullable="true" />
+    <Property Type="String" Name="TransactionType" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="trn_transactionSales">
+    <Key>
+      <PropertyRef Name="sales_id" />
+    </Key>
+    <Property Name="sales_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="referenceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAmount" Type="Double" />
+    <Property Name="Discounted" Type="Double" />
+    <Property Name="GrandTotal" Type="Double" />
+    <Property Name="PayBalance" Type="Double" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isPaid" Type="Boolean" />
+    <Property Name="isVoided" Type="Boolean" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="processed_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AmountPaid" Type="Double" />
+    <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="payterms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nosofdays" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="ref_product_Search_Result1">
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="Int32" Name="category_id" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="supplierprice" Nullable="true" />
+    <Property Type="Double" Name="retailprice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Int32" Name="criticalQTY" Nullable="true" />
+    <Property Type="DateTime" Name="Expirydate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="updatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="unitWeight" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Weight" Nullable="true" />
+    <Property Type="Int32" Name="supplier_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ref_product_SelectById_Result">
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="Int32" Name="category_id" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="supplierprice" Nullable="true" />
+    <Property Type="Double" Name="retailprice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Int32" Name="criticalQTY" Nullable="true" />
+    <Property Type="DateTime" Name="Expirydate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="Int32" Name="supplier_id" Nullable="true" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="updatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="unitWeight" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Weight" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ref_supplier">
+    <Key>
+      <PropertyRef Name="supplier_id" />
+    </Key>
+    <Property Name="supplier_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Supplier_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isDelete" Type="Boolean" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="ref_supplier_Search_Result">
+    <Property Type="Int32" Name="supplier_id" Nullable="false" />
+    <Property Type="String" Name="Supplier_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Supplier_address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Supplier_contact" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ref_supplier_SelectAll_Result">
+    <Property Type="Int32" Name="supplier_id" Nullable="false" />
+    <Property Type="String" Name="Supplier_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Supplier_address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Supplier_contact" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ref_measurement">
+    <Key>
+      <PropertyRef Name="measure_id" />
+    </Key>
+    <Property Name="measure_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="ref_measurement_SelectAll_Result">
+    <Property Type="Int32" Name="measure_id" Nullable="false" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_customer_SelectbyId_Result">
+    <Property Type="Int32" Name="customer_id" Nullable="false" />
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Middle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="bBdate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TelNos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cpno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="emailaddress" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_SelectbyId_Result">
+    <Property Type="Int32" Name="sales_id" Nullable="false" />
+    <Property Type="String" Name="referenceNo" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Double" Name="Discounted" Nullable="true" />
+    <Property Type="Double" Name="GrandTotal" Nullable="true" />
+    <Property Type="Double" Name="PayBalance" Nullable="true" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isPaid" Nullable="true" />
+    <Property Type="Boolean" Name="isVoided" Nullable="true" />
+    <Property Type="Int32" Name="CustomerId" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="processed_by" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="AmountPaid" Nullable="true" />
+    <Property Type="String" Name="TransactionType" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_Selectrefno_Result">
+    <Property Type="Int32" Name="sales_id" Nullable="false" />
+    <Property Type="String" Name="referenceNo" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Double" Name="Discounted" Nullable="true" />
+    <Property Type="Double" Name="GrandTotal" Nullable="true" />
+    <Property Type="Double" Name="PayBalance" Nullable="true" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isPaid" Nullable="true" />
+    <Property Type="Boolean" Name="isVoided" Nullable="true" />
+    <Property Type="Int32" Name="CustomerId" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="processed_by" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="AmountPaid" Nullable="true" />
+    <Property Type="String" Name="TransactionType" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="idResult">
+    <Property Type="Decimal" Name="ID" Nullable="true" Precision="38" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="ref_user_Login_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isActive" Nullable="true" />
+    <Property Type="String" Name="Fullname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="position" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_detail_Selectbysales_id_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_detail_release_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="product_id1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="trn_product_release_SelectAll_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="releaseQTY" Nullable="true" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_product_details_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="trn_product_release">
+    <Key>
+      <PropertyRef Name="transactionlog_id" />
+    </Key>
+    <Property Name="transactionlog_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sales_detail_id" Type="Int32" />
+    <Property Name="sales_id" Type="Int32" />
+    <Property Name="releaseQTY" Type="Int32" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="trn_product_release_exists_Result">
+    <Property Type="Int32" Name="transactionlog_id" Nullable="false" />
+    <Property Type="Int32" Name="sales_detail_id" Nullable="true" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="Int32" Name="releaseQTY" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_detail_isallrelease_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="trn_PO_item">
+    <Key>
+      <PropertyRef Name="po_detail_id" />
+    </Key>
+    <Property Name="po_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="po_id" Type="Int32" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="QTY" Type="Int32" />
+    <Property Name="Measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Purchaseprice" Type="Double" />
+    <Property Name="isCheckedIn" Type="Boolean" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="ReleasedBy" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="trn_po_item_Checkedin_List_Result">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_po_item_List_Result">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_porequest_SelectAll_Result">
+    <Property Type="Int32" Name="po_id" Nullable="false" />
+    <Property Type="String" Name="poRef" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Createdby" Nullable="true" />
+    <Property Type="Boolean" Name="isCompleted" Nullable="true" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="trn_PORequest">
+    <Key>
+      <PropertyRef Name="po_id" />
+    </Key>
+    <Property Name="po_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="poRef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAmount" Type="Double" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="Createdby" Type="Int32" />
+    <Property Name="isCompleted" Type="Boolean" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="trn_po_item_List_bystatus_Result">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_po_item_List_exists_Result">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_po_item_Checkedin_List_byBarcode_Result">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_po_item_List_exists_Result1">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="trn_PORequest_Search_Result">
+    <Property Type="Int32" Name="po_id" Nullable="false" />
+    <Property Type="String" Name="poRef" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Createdby" Nullable="true" />
+    <Property Type="Boolean" Name="isCompleted" Nullable="true" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="customer_sales_date_Result">
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Middle" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" />
+    <Property Type="String" Name="unitWeight" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Weight" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="String" Name="referenceNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_product_details_select_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_po_item_List_select_Result">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_po_item_List_select_all_Result">
+    <Property Type="Int32" Name="po_detail_id" Nullable="false" />
+    <Property Type="Int32" Name="po_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ReleasedBy" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_product_details_select_all_Result">
+    <Property Type="Int32" Name="sales_detail_id" Nullable="false" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="true" />
+    <Property Type="Int32" Name="product_id" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_po_item_Checkedin_List_by_date_Result">
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="String" Name="Measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Purchaseprice" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedIn" Nullable="true" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="trn_transactionsales_product_details_select_bydate_Result">
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="Boolean" Name="isCheckedout" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Barcode" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="retailprice" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="customer_sales_receipt_Result">
+    <Property Type="String" Name="Firstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Middle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TelNos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cpno" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sales_id" Nullable="false" />
+    <Property Type="String" Name="referenceNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="productcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" />
+    <Property Type="String" Name="unitWeight" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Weight" Nullable="true" />
+    <Property Type="Double" Name="RetailPrice" Nullable="true" />
+    <Property Type="String" Name="measurement" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="QTY" Nullable="true" />
+    <Property Type="Double" Name="TotalAmount" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="Discounted" Nullable="true" />
+    <Property Type="Double" Name="GrandTotal" Nullable="true" />
+  </ComplexType>
+</Schema>

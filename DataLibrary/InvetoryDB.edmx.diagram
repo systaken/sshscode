@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="142dcb1729434de0acc133728f118b00" Name="Diagram1">
+        <EntityTypeShape EntityType="POInventoryModel.ref_access" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_module" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_product" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_status" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_user" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_productDetail" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_transaction_log" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_transactionSales_detail" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_customer" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_transactionSales" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_supplier" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_measurement" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_product_release" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_PO_item" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="POInventoryModel.trn_PORequest" Width="1.5" PointX="11.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="POInventoryModelStoreContainer" CdmEntityContainer="POInventoryEntities">
+    <EntitySetMapping Name="ref_access">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_access">
+        <MappingFragment StoreEntitySet="ref_access">
+          <ScalarProperty Name="access_id" ColumnName="access_id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="module_id" ColumnName="module_id" />
+          <ScalarProperty Name="hasAccess" ColumnName="hasAccess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_category">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_category">
+        <MappingFragment StoreEntitySet="ref_category">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_module">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_module">
+        <MappingFragment StoreEntitySet="ref_module">
+          <ScalarProperty Name="module_id" ColumnName="module_id" />
+          <ScalarProperty Name="moduleName" ColumnName="moduleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_product">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_product">
+        <MappingFragment StoreEntitySet="ref_product">
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="unitWeight" ColumnName="unitWeight" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="Expirydate" ColumnName="Expirydate" />
+          <ScalarProperty Name="criticalQTY" ColumnName="criticalQTY" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="supplierprice" ColumnName="supplierprice" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_status">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_status">
+        <MappingFragment StoreEntitySet="ref_status">
+          <ScalarProperty Name="statusID" ColumnName="statusID" />
+          <ScalarProperty Name="statusname" ColumnName="statusname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_user">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_user">
+        <MappingFragment StoreEntitySet="ref_user">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trn_productDetail">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_productDetail">
+        <MappingFragment StoreEntitySet="trn_productDetail">
+          <ScalarProperty Name="product_detail_id" ColumnName="product_detail_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="measurevalue" ColumnName="measurevalue" />
+          <ScalarProperty Name="supplierprice" ColumnName="supplierprice" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="dateupdated" ColumnName="dateupdated" />
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trn_transaction_log">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_transaction_log">
+        <MappingFragment StoreEntitySet="trn_transaction_log">
+          <ScalarProperty Name="statusLog_id" ColumnName="statusLog_id" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="current_status" ColumnName="current_status" />
+          <ScalarProperty Name="statusby" ColumnName="statusby" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trn_transactionSales_detail">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_transactionSales_detail">
+        <MappingFragment StoreEntitySet="trn_transactionSales_detail">
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ref_category_Insert" FunctionName="POInventoryModel.Store.ref_category_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_category_Search" FunctionName="POInventoryModel.Store.ref_category_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_category_Search_Result">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_category_SelectAll" FunctionName="POInventoryModel.Store.ref_category_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_category_SelectAll_Result">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_category_Update" FunctionName="POInventoryModel.Store.ref_category_Update" />
+    <FunctionImportMapping FunctionImportName="ref_product_SelectAll" FunctionName="POInventoryModel.Store.ref_product_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_product_SelectAll_Result">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="supplierprice" ColumnName="supplierprice" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="criticalQTY" ColumnName="criticalQTY" />
+          <ScalarProperty Name="Expirydate" ColumnName="Expirydate" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="unitWeight" ColumnName="unitWeight" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_user_Insert" FunctionName="POInventoryModel.Store.ref_user_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_user_Search" FunctionName="POInventoryModel.Store.ref_user_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_user_Search_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_user_SelectAll" FunctionName="POInventoryModel.Store.ref_user_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_user_SelectAll_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_user_Update" FunctionName="POInventoryModel.Store.ref_user_Update" />
+    <FunctionImportMapping FunctionImportName="trn_productdetail_Insert" FunctionName="POInventoryModel.Store.trn_productdetail_Insert" />
+    <FunctionImportMapping FunctionImportName="trn_productDetail_Search" FunctionName="POInventoryModel.Store.trn_productDetail_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_productDetail_Search_Result">
+          <ScalarProperty Name="product_detail_id" ColumnName="product_detail_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="measurevalue" ColumnName="measurevalue" />
+          <ScalarProperty Name="supplierprice" ColumnName="supplierprice" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="dateupdated" ColumnName="dateupdated" />
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_productdetail_SelectAll" FunctionName="POInventoryModel.Store.trn_productdetail_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_productdetail_SelectAll_Result">
+          <ScalarProperty Name="product_detail_id" ColumnName="product_detail_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="measurevalue" ColumnName="measurevalue" />
+          <ScalarProperty Name="supplierprice" ColumnName="supplierprice" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="dateupdated" ColumnName="dateupdated" />
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_productdetail_Update" FunctionName="POInventoryModel.Store.trn_productdetail_Update" />
+    <EntitySetMapping Name="trn_customer">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_customer">
+        <MappingFragment StoreEntitySet="trn_customer">
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+          <ScalarProperty Name="cpno" ColumnName="cpno" />
+          <ScalarProperty Name="TelNos" ColumnName="TelNos" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="bBdate" ColumnName="bBdate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Middle" ColumnName="Middle" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ref_status_Insert" FunctionName="POInventoryModel.Store.ref_status_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_status_SelectAll" FunctionName="POInventoryModel.Store.ref_status_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_status_SelectAll_Result">
+          <ScalarProperty Name="statusID" ColumnName="statusID" />
+          <ScalarProperty Name="statusname" ColumnName="statusname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_customer_Insert" FunctionName="POInventoryModel.Store.trn_customer_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.idResult">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_customer_Search" FunctionName="POInventoryModel.Store.trn_customer_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_customer_Search_Result">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Middle" ColumnName="Middle" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="bBdate" ColumnName="bBdate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TelNos" ColumnName="TelNos" />
+          <ScalarProperty Name="cpno" ColumnName="cpno" />
+          <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_customer_SelectAll" FunctionName="POInventoryModel.Store.trn_customer_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_customer_SelectAll_Result">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Middle" ColumnName="Middle" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="bBdate" ColumnName="bBdate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TelNos" ColumnName="TelNos" />
+          <ScalarProperty Name="cpno" ColumnName="cpno" />
+          <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_customer_Update" FunctionName="POInventoryModel.Store.trn_customer_Update" />
+    <FunctionImportMapping FunctionImportName="trn_transaction_log_Insert" FunctionName="POInventoryModel.Store.trn_transaction_log_Insert" />
+    <FunctionImportMapping FunctionImportName="trn_transaction_log_Search" FunctionName="POInventoryModel.Store.trn_transaction_log_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transaction_log_Search_Result">
+          <ScalarProperty Name="statusLog_id" ColumnName="statusLog_id" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="current_status" ColumnName="current_status" />
+          <ScalarProperty Name="statusby" ColumnName="statusby" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transaction_log_SelectAll" FunctionName="POInventoryModel.Store.trn_transaction_log_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transaction_log_SelectAll_Result">
+          <ScalarProperty Name="statusLog_id" ColumnName="statusLog_id" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="current_status" ColumnName="current_status" />
+          <ScalarProperty Name="statusby" ColumnName="statusby" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_Insert" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_Insert" />
+    <FunctionImportMapping FunctionImportName="trn_transactionSales_detail_Search" FunctionName="POInventoryModel.Store.trn_transactionSales_detail_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionSales_detail_Search_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_SelectAll" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_detail_SelectAll_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_Update" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_Update" />
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_Insert" FunctionName="POInventoryModel.Store.trn_transactionsales_Insert" />
+    <FunctionImportMapping FunctionImportName="trn_transactionSales_Search" FunctionName="POInventoryModel.Store.trn_transactionSales_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionSales_Search_Result">
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="referenceNo" ColumnName="referenceNo" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Discounted" ColumnName="Discounted" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="PayBalance" ColumnName="PayBalance" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+          <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="processed_by" ColumnName="processed_by" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="payterms" ColumnName="payterms" />
+          <ScalarProperty Name="nosofdays" ColumnName="nosofdays" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_SelectAll" FunctionName="POInventoryModel.Store.trn_transactionsales_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_SelectAll_Result">
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="referenceNo" ColumnName="referenceNo" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Discounted" ColumnName="Discounted" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="PayBalance" ColumnName="PayBalance" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+          <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="processed_by" ColumnName="processed_by" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_Update" FunctionName="POInventoryModel.Store.trn_transactionsales_Update" />
+    <EntitySetMapping Name="trn_transactionSales">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_transactionSales">
+        <MappingFragment StoreEntitySet="trn_transactionSales">
+          <ScalarProperty Name="nosofdays" ColumnName="nosofdays" />
+          <ScalarProperty Name="payterms" ColumnName="payterms" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="processed_by" ColumnName="processed_by" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+          <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="PayBalance" ColumnName="PayBalance" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="Discounted" ColumnName="Discounted" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="referenceNo" ColumnName="referenceNo" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_Delete" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_Delete" />
+    <FunctionImportMapping FunctionImportName="ref_product_Insert" FunctionName="POInventoryModel.Store.ref_product_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_product_Search" FunctionName="POInventoryModel.Store.ref_product_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_product_Search_Result1">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="supplierprice" ColumnName="supplierprice" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="criticalQTY" ColumnName="criticalQTY" />
+          <ScalarProperty Name="Expirydate" ColumnName="Expirydate" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="unitWeight" ColumnName="unitWeight" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_product_Update" FunctionName="POInventoryModel.Store.ref_product_Update" />
+    <FunctionImportMapping FunctionImportName="ref_product_SelectById" FunctionName="POInventoryModel.Store.ref_product_SelectById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_product_SelectById_Result">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="supplierprice" ColumnName="supplierprice" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="criticalQTY" ColumnName="criticalQTY" />
+          <ScalarProperty Name="Expirydate" ColumnName="Expirydate" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="unitWeight" ColumnName="unitWeight" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ref_supplier">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_supplier">
+        <MappingFragment StoreEntitySet="ref_supplier">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="Supplier_contact" ColumnName="Supplier_contact" />
+          <ScalarProperty Name="Supplier_address" ColumnName="Supplier_address" />
+          <ScalarProperty Name="Supplier_name" ColumnName="Supplier_name" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ref_supplier_Insert" FunctionName="POInventoryModel.Store.ref_supplier_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_supplier_Search" FunctionName="POInventoryModel.Store.ref_supplier_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_supplier_Search_Result">
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="Supplier_name" ColumnName="Supplier_name" />
+          <ScalarProperty Name="Supplier_address" ColumnName="Supplier_address" />
+          <ScalarProperty Name="Supplier_contact" ColumnName="Supplier_contact" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_supplier_SelectAll" FunctionName="POInventoryModel.Store.ref_supplier_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_supplier_SelectAll_Result">
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="Supplier_name" ColumnName="Supplier_name" />
+          <ScalarProperty Name="Supplier_address" ColumnName="Supplier_address" />
+          <ScalarProperty Name="Supplier_contact" ColumnName="Supplier_contact" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_supplier_Update" FunctionName="POInventoryModel.Store.ref_supplier_Update" />
+    <EntitySetMapping Name="ref_measurement">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_measurement">
+        <MappingFragment StoreEntitySet="ref_measurement">
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="measure_id" ColumnName="measure_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ref_measurement_Insert" FunctionName="POInventoryModel.Store.ref_measurement_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_measurement_SelectAll" FunctionName="POInventoryModel.Store.ref_measurement_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_measurement_SelectAll_Result">
+          <ScalarProperty Name="measure_id" ColumnName="measure_id" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_customer_SelectbyId" FunctionName="POInventoryModel.Store.trn_customer_SelectbyId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_customer_SelectbyId_Result">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Middle" ColumnName="Middle" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="bBdate" ColumnName="bBdate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="TelNos" ColumnName="TelNos" />
+          <ScalarProperty Name="cpno" ColumnName="cpno" />
+          <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_SelectbyId" FunctionName="POInventoryModel.Store.trn_transactionsales_SelectbyId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_SelectbyId_Result">
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="referenceNo" ColumnName="referenceNo" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Discounted" ColumnName="Discounted" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="PayBalance" ColumnName="PayBalance" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+          <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="processed_by" ColumnName="processed_by" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_Selectrefno" FunctionName="POInventoryModel.Store.trn_transactionsales_Selectrefno">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_Selectrefno_Result">
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="referenceNo" ColumnName="referenceNo" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Discounted" ColumnName="Discounted" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="PayBalance" ColumnName="PayBalance" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+          <ScalarProperty Name="isVoided" ColumnName="isVoided" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="processed_by" ColumnName="processed_by" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_user_Delete" FunctionName="POInventoryModel.Store.ref_user_Delete" />
+    <FunctionImportMapping FunctionImportName="ref_user_Login" FunctionName="POInventoryModel.Store.ref_user_Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_user_Login_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_Selectbysales_id" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_Selectbysales_id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_detail_Selectbysales_id_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_release" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_release">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_detail_release_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="product_id1" ColumnName="product_id1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_releasing_update" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_releasing_update" />
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_void_update" FunctionName="POInventoryModel.Store.trn_transactionsales_void_update" />
+    <FunctionImportMapping FunctionImportName="trn_product_release_Insert" FunctionName="POInventoryModel.Store.trn_product_release_Insert" />
+    <FunctionImportMapping FunctionImportName="trn_product_release_removed" FunctionName="POInventoryModel.Store.trn_product_release_removed" />
+    <FunctionImportMapping FunctionImportName="trn_product_release_SelectAll" FunctionName="POInventoryModel.Store.trn_product_release_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_product_release_SelectAll_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="releaseQTY" ColumnName="releaseQTY" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_product_release_update_qty" FunctionName="POInventoryModel.Store.trn_product_release_update_qty" />
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_product_details" FunctionName="POInventoryModel.Store.trn_transactionsales_product_details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_product_details_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="trn_product_release">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_product_release">
+        <MappingFragment StoreEntitySet="trn_product_release">
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="releaseQTY" ColumnName="releaseQTY" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="transactionlog_id" ColumnName="transactionlog_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_remove_update" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_remove_update" />
+    <FunctionImportMapping FunctionImportName="trn_product_release_exists" FunctionName="POInventoryModel.Store.trn_product_release_exists">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_product_release_exists_Result">
+          <ScalarProperty Name="transactionlog_id" ColumnName="transactionlog_id" />
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="releaseQTY" ColumnName="releaseQTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_detail_isallrelease" FunctionName="POInventoryModel.Store.trn_transactionsales_detail_isallrelease">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_detail_isallrelease_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_Update_status" FunctionName="POInventoryModel.Store.trn_transactionsales_Update_status" />
+    <FunctionImportMapping FunctionImportName="trn_stock_qty_update" FunctionName="POInventoryModel.Store.trn_stock_qty_update" />
+    <EntitySetMapping Name="trn_PO_item">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_PO_item">
+        <MappingFragment StoreEntitySet="trn_PO_item">
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_Checkedin_List" FunctionName="POInventoryModel.Store.trn_po_item_Checkedin_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_Checkedin_List_Result">
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_Insert" FunctionName="POInventoryModel.Store.trn_po_item_Insert" />
+    <FunctionImportMapping FunctionImportName="trn_po_item_List" FunctionName="POInventoryModel.Store.trn_po_item_List">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_List_Result">
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_Remove" FunctionName="POInventoryModel.Store.trn_po_item_Remove" />
+    <FunctionImportMapping FunctionImportName="trn_po_item_Update" FunctionName="POInventoryModel.Store.trn_po_item_Update" />
+    <FunctionImportMapping FunctionImportName="trn_po_item_Update_status" FunctionName="POInventoryModel.Store.trn_po_item_Update_status" />
+    <FunctionImportMapping FunctionImportName="trn_porequest_GetId" FunctionName="POInventoryModel.Store.trn_porequest_GetId" />
+    <FunctionImportMapping FunctionImportName="trn_porequest_Insert" FunctionName="POInventoryModel.Store.trn_porequest_Insert" />
+    <FunctionImportMapping FunctionImportName="trn_porequest_SelectAll" FunctionName="POInventoryModel.Store.trn_porequest_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_porequest_SelectAll_Result">
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="poRef" ColumnName="poRef" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="isCompleted" ColumnName="isCompleted" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_porequest_Update_amount" FunctionName="POInventoryModel.Store.trn_porequest_Update_amount" />
+    <FunctionImportMapping FunctionImportName="trn_porequest_Update_status" FunctionName="POInventoryModel.Store.trn_porequest_Update_status" />
+    <EntitySetMapping Name="trn_PORequest">
+      <EntityTypeMapping TypeName="POInventoryModel.trn_PORequest">
+        <MappingFragment StoreEntitySet="trn_PORequest">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isCompleted" ColumnName="isCompleted" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="poRef" ColumnName="poRef" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_List_bystatus" FunctionName="POInventoryModel.Store.trn_po_item_List_bystatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_List_bystatus_Result">
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_Checkedin_List_byBarcode" FunctionName="POInventoryModel.Store.trn_po_item_Checkedin_List_byBarcode">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_Checkedin_List_byBarcode_Result">
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_List_exists" FunctionName="POInventoryModel.Store.trn_po_item_List_exists">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_List_exists_Result">
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_product_Update_QTY" FunctionName="POInventoryModel.Store.ref_product_Update_QTY" />
+    <FunctionImportMapping FunctionImportName="trn_PORequest_Search" FunctionName="POInventoryModel.Store.trn_PORequest_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_PORequest_Search_Result">
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="poRef" ColumnName="poRef" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="isCompleted" ColumnName="isCompleted" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="customer_sales_date" FunctionName="POInventoryModel.Store.customer_sales_date">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.customer_sales_date_Result">
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Middle" ColumnName="Middle" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="unitWeight" ColumnName="unitWeight" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="referenceNo" ColumnName="referenceNo" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_product_details_select" FunctionName="POInventoryModel.Store.trn_transactionsales_product_details_select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_product_details_select_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_List_select" FunctionName="POInventoryModel.Store.trn_po_item_List_select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_List_select_Result">
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_List_select_all" FunctionName="POInventoryModel.Store.trn_po_item_List_select_all">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_List_select_all_Result">
+          <ScalarProperty Name="po_detail_id" ColumnName="po_detail_id" />
+          <ScalarProperty Name="po_id" ColumnName="po_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_product_details_select_all" FunctionName="POInventoryModel.Store.trn_transactionsales_product_details_select_all">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_product_details_select_all_Result">
+          <ScalarProperty Name="sales_detail_id" ColumnName="sales_detail_id" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_po_item_Checkedin_List_by_date" FunctionName="POInventoryModel.Store.trn_po_item_Checkedin_List_by_date">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_po_item_Checkedin_List_by_date_Result">
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="isCheckedIn" ColumnName="isCheckedIn" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="trn_transactionsales_product_details_select_bydate" FunctionName="POInventoryModel.Store.trn_transactionsales_product_details_select_bydate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.trn_transactionsales_product_details_select_bydate_Result">
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="isCheckedout" ColumnName="isCheckedout" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="retailprice" ColumnName="retailprice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="customer_sales_receipt" FunctionName="POInventoryModel.Store.customer_sales_receipt">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.customer_sales_receipt_Result">
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Middle" ColumnName="Middle" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="TelNos" ColumnName="TelNos" />
+          <ScalarProperty Name="cpno" ColumnName="cpno" />
+          <ScalarProperty Name="sales_id" ColumnName="sales_id" />
+          <ScalarProperty Name="referenceNo" ColumnName="referenceNo" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="unitWeight" ColumnName="unitWeight" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Discounted" ColumnName="Discounted" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

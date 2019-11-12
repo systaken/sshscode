@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00F411E8-0606-4253-99B0-A8B2C010D628}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Inventory.business</RootNamespace>
+    <AssemblyName>Inventory.business</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configs\Categorys.cs" />
+    <Compile Include="Configs\Measures.cs" />
+    <Compile Include="Configs\ProductDetails.cs" />
+    <Compile Include="Configs\Products.cs" />
+    <Compile Include="Configs\Suppliers.cs" />
+    <Compile Include="DBRepositories.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\ChequeModel.cs" />
+    <Compile Include="Model\CustomerInfo.cs" />
+    <Compile Include="Model\CustomerPurchase.cs" />
+    <Compile Include="Model\DeliveryReceipt.cs" />
+    <Compile Include="Model\measure.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductReleases.cs" />
+    <Compile Include="Model\ProductReleasesReport.cs" />
+    <Compile Include="Model\ProductResult.cs" />
+    <Compile Include="Model\PR_relase_item.cs" />
+    <Compile Include="Model\PurchaseItem.cs" />
+    <Compile Include="Model\PurchaseItemReport.cs" />
+    <Compile Include="Model\PurchaseRequest.cs" />
+    <Compile Include="Model\Releases.cs" />
+    <Compile Include="Model\Security.cs" />
+    <Compile Include="Model\supplier.cs" />
+    <Compile Include="Model\Transactions.cs" />
+    <Compile Include="Model\TransactionDetails.cs" />
+    <Compile Include="Model\UsersRole.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\User.cs" />
+    <Compile Include="Transaction\Customer.cs" />
+    <Compile Include="Transaction\InventoryStocks.cs" />
+    <Compile Include="Transaction\Purchase.cs" />
+    <Compile Include="Transaction\ReleaseRepositories.cs" />
+    <Compile Include="Transaction\ReportClass.cs" />
+    <Compile Include="Transaction\Sales.cs" />
+    <Compile Include="Transaction\SalesDetail.cs" />
+    <Compile Include="Transaction\SalesLogs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLibrary\DataLibrary.csproj">
+      <Project>{3dc7a900-ab37-442a-8245-6637f217cdb8}</Project>
+      <Name>DataLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

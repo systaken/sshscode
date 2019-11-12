@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3DC7A900-AB37-442A-8245-6637F217CDB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DataLibrary</RootNamespace>
+    <AssemblyName>DataLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="customer_sales_date_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="customer_sales_receipt_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="idResult.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvetoryDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvetoryDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvetoryDB.cs" />
+    <Compile Include="InvetoryDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvetoryDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="InvetoryDB1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ref_access.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_category.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_category_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_category_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_measurement.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_measurement_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_module.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_product.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_product_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_product_Search_Result1.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_product_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_product_SelectById_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_status.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_status_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_supplier.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_supplier_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_supplier_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_user.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_user_Login_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_user_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_user_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_customer.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_customer_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_customer_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_customer_SelectbyId_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_PORequest.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_PORequest_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_porequest_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_PO_item.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_Checkedin_List_byBarcode_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_Checkedin_List_by_date_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_Checkedin_List_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_List_bystatus_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_List_exists_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_List_exists_Result1.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_List_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_List_select_all_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_po_item_List_select_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_productDetail.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_productDetail_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_productdetail_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_product_release.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_product_release_exists_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_product_release_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionSales.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionSales_detail.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_detail_isallrelease_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_detail_release_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionSales_detail_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_detail_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_detail_Selectbysales_id_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_product_details_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_product_details_select_all_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_product_details_select_bydate_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_product_details_select_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionSales_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_SelectbyId_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transactionsales_Selectrefno_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transaction_log.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transaction_log_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trn_transaction_log_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="InvetoryDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>InvetoryDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="InvetoryDB.edmx.diagram">
+      <DependentUpon>InvetoryDB.edmx</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InvetoryDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InvetoryDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="InvetoryDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InvetoryDB1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

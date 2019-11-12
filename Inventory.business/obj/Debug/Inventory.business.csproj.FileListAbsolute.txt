@@ -1,0 +1,13 @@
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\Inventory.business.dll.config
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\Inventory.business.dll
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\Inventory.business.pdb
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\DataLibrary.dll
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\EntityFramework.dll
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\DataLibrary.pdb
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\DataLibrary.dll.config
+G:\Development\POSInventory\SalesandInventory\Inventory.business\bin\Debug\EntityFramework.xml
+G:\Development\POSInventory\SalesandInventory\Inventory.business\obj\Debug\Inventory.business.csprojAssemblyReference.cache
+G:\Development\POSInventory\SalesandInventory\Inventory.business\obj\Debug\Inventory.business.csproj.CoreCompileInputs.cache
+G:\Development\POSInventory\SalesandInventory\Inventory.business\obj\Debug\Inventory.business.csproj.CopyComplete
+G:\Development\POSInventory\SalesandInventory\Inventory.business\obj\Debug\Inventory.business.dll
+G:\Development\POSInventory\SalesandInventory\Inventory.business\obj\Debug\Inventory.business.pdb
