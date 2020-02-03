@@ -27,7 +27,6 @@ namespace SalesandInventory.Customer
 
         private void button4_Click(object sender, EventArgs e)
         {
-
             SaveRecord();
             //Transaction.OrderFrm parent = (Transaction.OrderFrm)this.Owner;
             //parent.cusid = Id;
@@ -37,7 +36,6 @@ namespace SalesandInventory.Customer
         private void loadinformation(int id)
         {
             cus= _cus.SelectById(id);
-
             txtfirstname.Text = cus.Firstname;
             txtlastname.Text = cus.Lastname;
             txtmiddle.Text = cus.Middle;

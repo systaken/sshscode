@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Inventory.business.Model;
 using Inventory.business.Configs;
+using System.Data.Objects;
 namespace SalesandInventory.Product
 {
     public partial class ProductFrm : Form
@@ -73,9 +74,16 @@ namespace SalesandInventory.Product
             if (_isEdit == false)
             {
                 pr.dateCreated = Convert.ToDateTime(DateTime.Now.ToLongDateString());
-                _product.Create(pr);
-
-                MessageBox.Show("Record has been created");
+                var x = _product.Search(pr);
+                if (x.Count > 0)
+                {
+                    MessageBox.Show("Record already exists");
+                }
+                else
+                {
+                    _product.Create(pr);
+                    MessageBox.Show("Record has been created");
+                }
             }
             else
             {

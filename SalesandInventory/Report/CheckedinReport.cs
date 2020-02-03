@@ -18,7 +18,6 @@ namespace SalesandInventory.Report
         {
             InitializeComponent();
         }
-
         private void sbtnGen_Click(object sender, EventArgs e)
         {
             List<PurchaseItemReport> trx = new List<PurchaseItemReport>();

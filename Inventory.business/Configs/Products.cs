@@ -127,11 +127,41 @@ namespace Inventory.business.Configs
         }
 
 
-        public ObjectResult Search(product _ref)
+        public List<product> Search(product _ref)
         {
-            return pEntity.ref_product_Search(_ref.product_id, _ref.category_id, _ref.ProductCode, _ref.ProductName, _ref.ProductDescription,
+            List<product> ps = new List<product>();
+            List<ref_product_Search_Result1> x = pEntity.ref_product_Search(_ref.product_id, _ref.category_id, _ref.ProductCode, _ref.ProductName, _ref.ProductDescription,
                 _ref.Barcode, _ref.measurement, _ref.supplierprice, _ref.retailprice, _ref.QTY, _ref.criticalQTY, _ref.Expirydate, _ref.isDelete, _ref.isActive, _ref.supplier_id, _ref.dateCreated,
-                _ref.updatedBy, _ref.dateUpdated);
+                _ref.updatedBy, _ref.dateUpdated).ToList();
+
+            foreach (ref_product_Search_Result1 pr in x)
+            {
+                product result = new product();
+                result.Barcode = pr.Barcode;
+                result.category_id = pr.category_id;
+                result.criticalQTY = pr.criticalQTY;
+                result.Expirydate = pr.Expirydate;
+                result.measurement = pr.measurement;
+                result.dateCreated = pr.dateCreated;
+                result.dateUpdated = pr.dateUpdated;
+                result.isActive = pr.isActive;
+                result.isDelete = pr.isDelete;
+                result.ProductCode = pr.ProductCode;
+                result.ProductDescription = pr.ProductDescription;
+                result.ProductName = pr.ProductName;
+                result.product_id = pr.product_id;
+                result.QTY = pr.QTY;
+                result.retailprice = pr.retailprice;
+                result.supplierprice = pr.supplierprice;
+                result.supplier_id = pr.supplier_id;
+                result.updatedBy = pr.updatedBy;
+                result.Weight = pr.Weight;
+                result.unitWeight = pr.unitWeight;
+                ps.Add(result);
+                //ps.AddRange(result);
+            }
+            return ps;
+
         }
         public ProductResult SelectById(int id)
         {

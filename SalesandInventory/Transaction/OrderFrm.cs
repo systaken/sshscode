@@ -98,7 +98,11 @@ namespace SalesandInventory.Transaction
         int x = 1;
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-                ProductResult pr = new ProductResult();
+
+            ProductResult pr = new ProductResult();
+
+            if (cmbprod.SelectedValue != null)
+            {
                 string id = cmbprod.SelectedValue.ToString();
                 pr = _product.SelectById(Convert.ToInt16(id));
                 addItem(pr);
@@ -108,6 +112,11 @@ namespace SalesandInventory.Transaction
                 lblprice.Text = "0.00";
                 lbltotalprice.Text = "0.00";
                 txtqty.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Please select a product first.");
+            }
         }
         private void addItem(ProductResult pr)
         {
