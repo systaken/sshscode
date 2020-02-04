@@ -21,6 +21,9 @@
         <EntityTypeShape EntityType="POInventoryModel.trn_product_release" Width="1.5" PointX="9.375" PointY="7.75" />
         <EntityTypeShape EntityType="POInventoryModel.trn_PO_item" Width="1.5" PointX="9.375" PointY="10.75" />
         <EntityTypeShape EntityType="POInventoryModel.trn_PORequest" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_channel" Width="1.5" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_customer_discount" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="POInventoryModel.ref_trucking" Width="1.5" PointX="11.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

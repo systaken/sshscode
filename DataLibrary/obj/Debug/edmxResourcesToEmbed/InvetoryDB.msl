@@ -230,6 +230,12 @@
     <EntitySetMapping Name="trn_customer">
       <EntityTypeMapping TypeName="POInventoryModel.trn_customer">
         <MappingFragment StoreEntitySet="trn_customer">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Terms" ColumnName="Terms" />
+          <ScalarProperty Name="AgentName" ColumnName="AgentName" />
           <ScalarProperty Name="datecreated" ColumnName="datecreated" />
           <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
           <ScalarProperty Name="cpno" ColumnName="cpno" />
@@ -278,6 +284,12 @@
           <ScalarProperty Name="cpno" ColumnName="cpno" />
           <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
           <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+          <ScalarProperty Name="Terms" ColumnName="Terms" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -297,6 +309,12 @@
           <ScalarProperty Name="cpno" ColumnName="cpno" />
           <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
           <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+          <ScalarProperty Name="Terms" ColumnName="Terms" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -547,6 +565,12 @@
           <ScalarProperty Name="cpno" ColumnName="cpno" />
           <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
           <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+          <ScalarProperty Name="Terms" ColumnName="Terms" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -987,5 +1011,55 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="ref_channel">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_channel">
+        <MappingFragment StoreEntitySet="ref_channel">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+          <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_customer_discount">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_customer_discount">
+        <MappingFragment StoreEntitySet="ref_customer_discount">
+          <ScalarProperty Name="discounts" ColumnName="discounts" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="cs_discount_id" ColumnName="cs_discount_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ref_trucking">
+      <EntityTypeMapping TypeName="POInventoryModel.ref_trucking">
+        <MappingFragment StoreEntitySet="ref_trucking">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="platenos" ColumnName="platenos" />
+          <ScalarProperty Name="trucking_name" ColumnName="trucking_name" />
+          <ScalarProperty Name="trucking_id" ColumnName="trucking_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ref_trucking_Insert" FunctionName="POInventoryModel.Store.ref_trucking_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_trucking_Search" FunctionName="POInventoryModel.Store.ref_trucking_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_trucking_Search_Result">
+          <ScalarProperty Name="trucking_id" ColumnName="trucking_id" />
+          <ScalarProperty Name="trucking_name" ColumnName="trucking_name" />
+          <ScalarProperty Name="platenos" ColumnName="platenos" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_trucking_SelectAll" FunctionName="POInventoryModel.Store.ref_trucking_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_trucking_SelectAll_Result">
+          <ScalarProperty Name="trucking_id" ColumnName="trucking_id" />
+          <ScalarProperty Name="trucking_name" ColumnName="trucking_name" />
+          <ScalarProperty Name="platenos" ColumnName="platenos" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_trucking_Update" FunctionName="POInventoryModel.Store.ref_trucking_Update" />
   </EntityContainerMapping>
 </Mapping>

@@ -21,6 +21,22 @@
           <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="categoryname" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ref_channel">
+          <Key>
+            <PropertyRef Name="channel_id" />
+          </Key>
+          <Property Name="channel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="channel_name" Type="varchar" MaxLength="50" />
+          <Property Name="isDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="ref_customer_discount">
+          <Key>
+            <PropertyRef Name="cs_discount_id" />
+          </Key>
+          <Property Name="cs_discount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerId" Type="int" />
+          <Property Name="discounts" Type="float" />
+        </EntityType>
         <EntityType Name="ref_measurement">
           <Key>
             <PropertyRef Name="measure_id" />
@@ -78,6 +94,15 @@
           <Property Name="isDelete" Type="bit" />
           <Property Name="isActive" Type="bit" />
         </EntityType>
+        <EntityType Name="ref_trucking">
+          <Key>
+            <PropertyRef Name="trucking_id" />
+          </Key>
+          <Property Name="trucking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trucking_name" Type="varchar" MaxLength="50" />
+          <Property Name="platenos" Type="varchar" MaxLength="50" />
+          <Property Name="isDelete" Type="bit" />
+        </EntityType>
         <EntityType Name="ref_user">
           <Key>
             <PropertyRef Name="userid" />
@@ -106,6 +131,12 @@
           <Property Name="cpno" Type="varchar" MaxLength="50" />
           <Property Name="emailaddress" Type="varchar" MaxLength="50" />
           <Property Name="datecreated" Type="datetime" />
+          <Property Name="AgentName" Type="varchar" MaxLength="50" />
+          <Property Name="Terms" Type="varchar" MaxLength="50" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="100" />
+          <Property Name="truck_id" Type="int" />
+          <Property Name="isDelete" Type="bit" />
         </EntityType>
         <EntityType Name="trn_PO_item">
           <Key>
@@ -330,6 +361,23 @@
           <Parameter Name="isDelete" Type="bit" Mode="In" />
           <Parameter Name="isActive" Type="bit" Mode="In" />
         </Function>
+        <Function Name="ref_trucking_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trucking_id" Type="int" Mode="In" />
+          <Parameter Name="trucking_name" Type="varchar" Mode="In" />
+          <Parameter Name="platenos" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ref_trucking_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trucking_id" Type="int" Mode="In" />
+          <Parameter Name="trucking_name" Type="varchar" Mode="In" />
+          <Parameter Name="platenos" Type="varchar" Mode="In" />
+          <Parameter Name="isDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="ref_trucking_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ref_trucking_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trucking_id" Type="int" Mode="In" />
+          <Parameter Name="trucking_name" Type="varchar" Mode="In" />
+          <Parameter Name="platenos" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="ref_user_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
         </Function>
@@ -375,6 +423,12 @@
           <Parameter Name="cpno" Type="varchar" Mode="In" />
           <Parameter Name="emailaddress" Type="varchar" Mode="In" />
           <Parameter Name="datecreated" Type="datetime" Mode="In" />
+          <Parameter Name="AgentName" Type="varchar" Mode="In" />
+          <Parameter Name="Terms" Type="varchar" Mode="In" />
+          <Parameter Name="Discount" Type="float" Mode="In" />
+          <Parameter Name="BusinessName" Type="varchar" Mode="In" />
+          <Parameter Name="truck_id" Type="int" Mode="In" />
+          <Parameter Name="isDelete" Type="bit" Mode="In" />
         </Function>
         <Function Name="trn_customer_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="customer_id" Type="int" Mode="In" />
@@ -409,6 +463,11 @@
           <Parameter Name="cpno" Type="varchar" Mode="In" />
           <Parameter Name="emailaddress" Type="varchar" Mode="In" />
           <Parameter Name="datecreated" Type="datetime" Mode="In" />
+          <Parameter Name="AgentName" Type="varchar" Mode="In" />
+          <Parameter Name="Terms" Type="varchar" Mode="In" />
+          <Parameter Name="Discount" Type="float" Mode="In" />
+          <Parameter Name="BusinessName" Type="varchar" Mode="In" />
+          <Parameter Name="truck_id" Type="int" Mode="In" />
         </Function>
         <Function Name="trn_po_item_Checkedin_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="po_id" Type="int" Mode="In" />
@@ -732,11 +791,14 @@
         <EntityContainer Name="POInventoryModelStoreContainer">
           <EntitySet Name="ref_access" EntityType="Self.ref_access" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_category" EntityType="Self.ref_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ref_channel" EntityType="Self.ref_channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ref_customer_discount" EntityType="Self.ref_customer_discount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_measurement" EntityType="Self.ref_measurement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_module" EntityType="Self.ref_module" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_product" EntityType="Self.ref_product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_status" EntityType="Self.ref_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_supplier" EntityType="Self.ref_supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ref_trucking" EntityType="Self.ref_trucking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_user" EntityType="Self.ref_user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trn_customer" EntityType="Self.trn_customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trn_PO_item" EntityType="Self.trn_PO_item" Schema="dbo" store:Type="Tables" />
@@ -971,6 +1033,12 @@
             <Parameter Name="cpno" Mode="In" Type="String" />
             <Parameter Name="emailaddress" Mode="In" Type="String" />
             <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+            <Parameter Name="AgentName" Mode="In" Type="String" />
+            <Parameter Name="Terms" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="Double" />
+            <Parameter Name="BusinessName" Mode="In" Type="String" />
+            <Parameter Name="truck_id" Mode="In" Type="Int32" />
+            <Parameter Name="isDelete" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="trn_customer_Search" ReturnType="Collection(POInventoryModel.trn_customer_Search_Result)">
             <Parameter Name="customer_id" Mode="In" Type="Int32" />
@@ -1002,6 +1070,11 @@
             <Parameter Name="cpno" Mode="In" Type="String" />
             <Parameter Name="emailaddress" Mode="In" Type="String" />
             <Parameter Name="datecreated" Mode="In" Type="DateTime" />
+            <Parameter Name="AgentName" Mode="In" Type="String" />
+            <Parameter Name="Terms" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="Double" />
+            <Parameter Name="BusinessName" Mode="In" Type="String" />
+            <Parameter Name="truck_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="trn_transaction_log_Insert">
             <Parameter Name="sales_id" Mode="In" Type="Int32" />
@@ -1398,6 +1471,26 @@
           <FunctionImport Name="customer_sales_receipt" ReturnType="Collection(POInventoryModel.customer_sales_receipt_Result)">
           <Parameter Name="sales_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="ref_channel" EntityType="POInventoryModel.ref_channel" />
+          <EntitySet Name="ref_customer_discount" EntityType="POInventoryModel.ref_customer_discount" />
+          <EntitySet Name="ref_trucking" EntityType="POInventoryModel.ref_trucking" />
+          <FunctionImport Name="ref_trucking_Insert">
+            <Parameter Name="trucking_id" Mode="In" Type="Int32" />
+            <Parameter Name="trucking_name" Mode="In" Type="String" />
+            <Parameter Name="platenos" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ref_trucking_Search" ReturnType="Collection(POInventoryModel.ref_trucking_Search_Result)">
+            <Parameter Name="trucking_id" Mode="In" Type="Int32" />
+            <Parameter Name="trucking_name" Mode="In" Type="String" />
+            <Parameter Name="platenos" Mode="In" Type="String" />
+            <Parameter Name="isDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ref_trucking_SelectAll" ReturnType="Collection(POInventoryModel.ref_trucking_SelectAll_Result)" />
+          <FunctionImport Name="ref_trucking_Update">
+            <Parameter Name="trucking_id" Mode="In" Type="Int32" />
+            <Parameter Name="trucking_name" Mode="In" Type="String" />
+            <Parameter Name="platenos" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ref_category_Search_Result">
           <Property Type="Int32" Name="category_id" Nullable="false" />
@@ -1509,6 +1602,12 @@
           <Property Name="cpno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="emailaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="datecreated" Type="DateTime" Precision="3" />
+          <Property Name="AgentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Terms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="BusinessName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="truck_id" Type="Int32" />
+          <Property Name="isDelete" Type="Boolean" />
         </EntityType>
         <ComplexType Name="ref_status_SelectAll_Result">
           <Property Type="Int32" Name="statusID" Nullable="false" />
@@ -1528,6 +1627,12 @@
           <Property Type="String" Name="cpno" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="emailaddress" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="AgentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Terms" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Discount" Nullable="true" />
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="truck_id" Nullable="true" />
+          <Property Type="Boolean" Name="isDelete" Nullable="true" />
         </ComplexType>
         <ComplexType Name="trn_customer_SelectAll_Result">
           <Property Type="Int32" Name="customer_id" Nullable="false" />
@@ -1543,6 +1648,12 @@
           <Property Type="String" Name="cpno" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="emailaddress" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="AgentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Terms" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Discount" Nullable="true" />
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="truck_id" Nullable="true" />
+          <Property Type="Boolean" Name="isDelete" Nullable="true" />
         </ComplexType>
         <ComplexType Name="trn_transaction_log_Search_Result">
           <Property Type="Int32" Name="statusLog_id" Nullable="false" />
@@ -1730,6 +1841,12 @@
           <Property Type="String" Name="cpno" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="emailaddress" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="datecreated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="AgentName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Terms" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Discount" Nullable="true" />
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="truck_id" Nullable="true" />
+          <Property Type="Boolean" Name="isDelete" Nullable="true" />
         </ComplexType>
         <ComplexType Name="trn_transactionsales_SelectbyId_Result">
           <Property Type="Int32" Name="sales_id" Nullable="false" />
@@ -2065,6 +2182,43 @@
           <Property Type="Double" Name="Discounted" Nullable="true" />
           <Property Type="Double" Name="GrandTotal" Nullable="true" />
         </ComplexType>
+        <EntityType Name="ref_channel">
+          <Key>
+            <PropertyRef Name="channel_id" />
+          </Key>
+          <Property Name="channel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="channel_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ref_customer_discount">
+          <Key>
+            <PropertyRef Name="cs_discount_id" />
+          </Key>
+          <Property Name="cs_discount_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerId" Type="Int32" />
+          <Property Name="discounts" Type="Double" />
+        </EntityType>
+        <EntityType Name="ref_trucking">
+          <Key>
+            <PropertyRef Name="trucking_id" />
+          </Key>
+          <Property Name="trucking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trucking_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="platenos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isDelete" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="ref_trucking_Search_Result">
+          <Property Type="Int32" Name="trucking_id" Nullable="false" />
+          <Property Type="String" Name="trucking_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="platenos" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="isDelete" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ref_trucking_SelectAll_Result">
+          <Property Type="Int32" Name="trucking_id" Nullable="false" />
+          <Property Type="String" Name="trucking_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="platenos" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="isDelete" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2300,6 +2454,12 @@
           <EntitySetMapping Name="trn_customer">
             <EntityTypeMapping TypeName="POInventoryModel.trn_customer">
               <MappingFragment StoreEntitySet="trn_customer">
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
                 <ScalarProperty Name="datecreated" ColumnName="datecreated" />
                 <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
                 <ScalarProperty Name="cpno" ColumnName="cpno" />
@@ -2348,6 +2508,12 @@
                 <ScalarProperty Name="cpno" ColumnName="cpno" />
                 <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
                 <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2367,6 +2533,12 @@
                 <ScalarProperty Name="cpno" ColumnName="cpno" />
                 <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
                 <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2617,6 +2789,12 @@
                 <ScalarProperty Name="cpno" ColumnName="cpno" />
                 <ScalarProperty Name="emailaddress" ColumnName="emailaddress" />
                 <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="truck_id" ColumnName="truck_id" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3057,6 +3235,56 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="ref_channel">
+            <EntityTypeMapping TypeName="POInventoryModel.ref_channel">
+              <MappingFragment StoreEntitySet="ref_channel">
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+                <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ref_customer_discount">
+            <EntityTypeMapping TypeName="POInventoryModel.ref_customer_discount">
+              <MappingFragment StoreEntitySet="ref_customer_discount">
+                <ScalarProperty Name="discounts" ColumnName="discounts" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="cs_discount_id" ColumnName="cs_discount_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ref_trucking">
+            <EntityTypeMapping TypeName="POInventoryModel.ref_trucking">
+              <MappingFragment StoreEntitySet="ref_trucking">
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="platenos" ColumnName="platenos" />
+                <ScalarProperty Name="trucking_name" ColumnName="trucking_name" />
+                <ScalarProperty Name="trucking_id" ColumnName="trucking_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ref_trucking_Insert" FunctionName="POInventoryModel.Store.ref_trucking_Insert" />
+          <FunctionImportMapping FunctionImportName="ref_trucking_Search" FunctionName="POInventoryModel.Store.ref_trucking_Search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POInventoryModel.ref_trucking_Search_Result">
+                <ScalarProperty Name="trucking_id" ColumnName="trucking_id" />
+                <ScalarProperty Name="trucking_name" ColumnName="trucking_name" />
+                <ScalarProperty Name="platenos" ColumnName="platenos" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ref_trucking_SelectAll" FunctionName="POInventoryModel.Store.ref_trucking_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POInventoryModel.ref_trucking_SelectAll_Result">
+                <ScalarProperty Name="trucking_id" ColumnName="trucking_id" />
+                <ScalarProperty Name="trucking_name" ColumnName="trucking_name" />
+                <ScalarProperty Name="platenos" ColumnName="platenos" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ref_trucking_Update" FunctionName="POInventoryModel.Store.ref_trucking_Update" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

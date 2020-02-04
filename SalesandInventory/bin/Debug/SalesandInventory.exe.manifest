@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataLibrary.dll" size="315392">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataLibrary.dll" size="336896">
       <assemblyIdentity name="DataLibrary" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hcoQvGOlN+mOw6lnVczhUYuiV+8=</dsig:DigestValue>
+        <dsig:DigestValue>5mkCsiuIhEv7mMJN377oqpSz684=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Inventory.business.dll" size="59392">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Inventory.business.dll" size="61440">
       <assemblyIdentity name="Inventory.business" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Af0xSZeMTdG3VaLKkyqveBRdS2Y=</dsig:DigestValue>
+        <dsig:DigestValue>1ro1IMxIg0jkP0y5+Z32X2MXjXs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -138,24 +138,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SalesandInventory.exe" size="793064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SalesandInventory.exe" size="796136">
       <assemblyIdentity name="SalesandInventory" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Er663SsWb12RCGyvmXTi7iCWpMg=</dsig:DigestValue>
+        <dsig:DigestValue>sksjwr6N52KEyv3FzXblt9QRde8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SalesandInventory.exe.config" size="500">
+  <file name="SalesandInventory.exe.config" size="937">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>rJLaeIEHXwNXofBKGTaIR6ltISg=</dsig:DigestValue>
+      <dsig:DigestValue>yxZ47TyoTh9glqXuKP+p8eyjZdo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="SqlServerTypes\readme.htm" size="1709">

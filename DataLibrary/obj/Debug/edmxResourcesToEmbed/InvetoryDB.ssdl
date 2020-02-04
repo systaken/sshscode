@@ -16,6 +16,22 @@
     <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="categoryname" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="ref_channel">
+    <Key>
+      <PropertyRef Name="channel_id" />
+    </Key>
+    <Property Name="channel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="channel_name" Type="varchar" MaxLength="50" />
+    <Property Name="isDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="ref_customer_discount">
+    <Key>
+      <PropertyRef Name="cs_discount_id" />
+    </Key>
+    <Property Name="cs_discount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerId" Type="int" />
+    <Property Name="discounts" Type="float" />
+  </EntityType>
   <EntityType Name="ref_measurement">
     <Key>
       <PropertyRef Name="measure_id" />
@@ -73,6 +89,15 @@
     <Property Name="isDelete" Type="bit" />
     <Property Name="isActive" Type="bit" />
   </EntityType>
+  <EntityType Name="ref_trucking">
+    <Key>
+      <PropertyRef Name="trucking_id" />
+    </Key>
+    <Property Name="trucking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="trucking_name" Type="varchar" MaxLength="50" />
+    <Property Name="platenos" Type="varchar" MaxLength="50" />
+    <Property Name="isDelete" Type="bit" />
+  </EntityType>
   <EntityType Name="ref_user">
     <Key>
       <PropertyRef Name="userid" />
@@ -101,6 +126,12 @@
     <Property Name="cpno" Type="varchar" MaxLength="50" />
     <Property Name="emailaddress" Type="varchar" MaxLength="50" />
     <Property Name="datecreated" Type="datetime" />
+    <Property Name="AgentName" Type="varchar" MaxLength="50" />
+    <Property Name="Terms" Type="varchar" MaxLength="50" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="BusinessName" Type="varchar" MaxLength="100" />
+    <Property Name="truck_id" Type="int" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="trn_PO_item">
     <Key>
@@ -325,6 +356,23 @@
     <Parameter Name="isDelete" Type="bit" Mode="In" />
     <Parameter Name="isActive" Type="bit" Mode="In" />
   </Function>
+  <Function Name="ref_trucking_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="trucking_id" Type="int" Mode="In" />
+    <Parameter Name="trucking_name" Type="varchar" Mode="In" />
+    <Parameter Name="platenos" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ref_trucking_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="trucking_id" Type="int" Mode="In" />
+    <Parameter Name="trucking_name" Type="varchar" Mode="In" />
+    <Parameter Name="platenos" Type="varchar" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="ref_trucking_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_trucking_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="trucking_id" Type="int" Mode="In" />
+    <Parameter Name="trucking_name" Type="varchar" Mode="In" />
+    <Parameter Name="platenos" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="ref_user_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userid" Type="int" Mode="In" />
   </Function>
@@ -370,6 +418,12 @@
     <Parameter Name="cpno" Type="varchar" Mode="In" />
     <Parameter Name="emailaddress" Type="varchar" Mode="In" />
     <Parameter Name="datecreated" Type="datetime" Mode="In" />
+    <Parameter Name="AgentName" Type="varchar" Mode="In" />
+    <Parameter Name="Terms" Type="varchar" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+    <Parameter Name="BusinessName" Type="varchar" Mode="In" />
+    <Parameter Name="truck_id" Type="int" Mode="In" />
+    <Parameter Name="isDelete" Type="bit" Mode="In" />
   </Function>
   <Function Name="trn_customer_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="customer_id" Type="int" Mode="In" />
@@ -404,6 +458,11 @@
     <Parameter Name="cpno" Type="varchar" Mode="In" />
     <Parameter Name="emailaddress" Type="varchar" Mode="In" />
     <Parameter Name="datecreated" Type="datetime" Mode="In" />
+    <Parameter Name="AgentName" Type="varchar" Mode="In" />
+    <Parameter Name="Terms" Type="varchar" Mode="In" />
+    <Parameter Name="Discount" Type="float" Mode="In" />
+    <Parameter Name="BusinessName" Type="varchar" Mode="In" />
+    <Parameter Name="truck_id" Type="int" Mode="In" />
   </Function>
   <Function Name="trn_po_item_Checkedin_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="po_id" Type="int" Mode="In" />
@@ -727,11 +786,14 @@
   <EntityContainer Name="POInventoryModelStoreContainer">
     <EntitySet Name="ref_access" EntityType="Self.ref_access" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ref_category" EntityType="Self.ref_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_channel" EntityType="Self.ref_channel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_customer_discount" EntityType="Self.ref_customer_discount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ref_measurement" EntityType="Self.ref_measurement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ref_module" EntityType="Self.ref_module" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ref_product" EntityType="Self.ref_product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ref_status" EntityType="Self.ref_status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ref_supplier" EntityType="Self.ref_supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ref_trucking" EntityType="Self.ref_trucking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ref_user" EntityType="Self.ref_user" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="trn_customer" EntityType="Self.trn_customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="trn_PO_item" EntityType="Self.trn_PO_item" Schema="dbo" store:Type="Tables" />

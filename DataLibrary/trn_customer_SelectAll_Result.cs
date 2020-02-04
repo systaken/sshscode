@@ -26,5 +26,11 @@ namespace DataLibrary
         public string cpno { get; set; }
         public string emailaddress { get; set; }
         public Nullable<System.DateTime> datecreated { get; set; }
+        public string AgentName { get; set; }
+        public string Terms { get; set; }
+        public Nullable<double> Discount { get; set; }
+        public string BusinessName { get; set; }
+        public Nullable<int> truck_id { get; set; }
+        public Nullable<bool> isDelete { get; set; }
     }
 }

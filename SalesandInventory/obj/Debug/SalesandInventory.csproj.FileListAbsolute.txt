@@ -194,3 +194,5 @@ D:\Programs\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.
 D:\Programs\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.csproj.CopyComplete
 D:\Programs\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.exe
 D:\Programs\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.pdb
+D:\Programs\POSInventory\sshscode\SalesandInventory\obj\Debug\RdlCompile.cache
+D:\Programs\POSInventory\sshscode\SalesandInventory\obj\Debug\RdlCompile.compiled

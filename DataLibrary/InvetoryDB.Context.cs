@@ -44,6 +44,9 @@ namespace DataLibrary
         public DbSet<trn_product_release> trn_product_release { get; set; }
         public DbSet<trn_PO_item> trn_PO_item { get; set; }
         public DbSet<trn_PORequest> trn_PORequest { get; set; }
+        public DbSet<ref_channel> ref_channel { get; set; }
+        public DbSet<ref_customer_discount> ref_customer_discount { get; set; }
+        public DbSet<ref_trucking> ref_trucking { get; set; }
     
         public virtual int ref_category_Insert(Nullable<int> category_id, string categoryname)
         {
@@ -376,7 +379,7 @@ namespace DataLibrary
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ref_status_SelectAll_Result>("ref_status_SelectAll");
         }
     
-        public virtual ObjectResult<idResult> trn_customer_Insert(string firstname, string lastname, string middle, string gender, Nullable<System.DateTime> bBdate, string address, string city, string country, string telNos, string cpno, string emailaddress, Nullable<System.DateTime> datecreated)
+        public virtual ObjectResult<idResult> trn_customer_Insert(string firstname, string lastname, string middle, string gender, Nullable<System.DateTime> bBdate, string address, string city, string country, string telNos, string cpno, string emailaddress, Nullable<System.DateTime> datecreated, string agentName, string terms, Nullable<double> discount, string businessName, Nullable<int> truck_id, Nullable<bool> isDelete)
         {
             var firstnameParameter = firstname != null ?
                 new ObjectParameter("Firstname", firstname) :
@@ -426,7 +429,31 @@ namespace DataLibrary
                 new ObjectParameter("datecreated", datecreated) :
                 new ObjectParameter("datecreated", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<idResult>("trn_customer_Insert", firstnameParameter, lastnameParameter, middleParameter, genderParameter, bBdateParameter, addressParameter, cityParameter, countryParameter, telNosParameter, cpnoParameter, emailaddressParameter, datecreatedParameter);
+            var agentNameParameter = agentName != null ?
+                new ObjectParameter("AgentName", agentName) :
+                new ObjectParameter("AgentName", typeof(string));
+    
+            var termsParameter = terms != null ?
+                new ObjectParameter("Terms", terms) :
+                new ObjectParameter("Terms", typeof(string));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(double));
+    
+            var businessNameParameter = businessName != null ?
+                new ObjectParameter("BusinessName", businessName) :
+                new ObjectParameter("BusinessName", typeof(string));
+    
+            var truck_idParameter = truck_id.HasValue ?
+                new ObjectParameter("truck_id", truck_id) :
+                new ObjectParameter("truck_id", typeof(int));
+    
+            var isDeleteParameter = isDelete.HasValue ?
+                new ObjectParameter("isDelete", isDelete) :
+                new ObjectParameter("isDelete", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<idResult>("trn_customer_Insert", firstnameParameter, lastnameParameter, middleParameter, genderParameter, bBdateParameter, addressParameter, cityParameter, countryParameter, telNosParameter, cpnoParameter, emailaddressParameter, datecreatedParameter, agentNameParameter, termsParameter, discountParameter, businessNameParameter, truck_idParameter, isDeleteParameter);
         }
     
         public virtual ObjectResult<trn_customer_Search_Result> trn_customer_Search(Nullable<int> customer_id, string firstname, string lastname, string middle, string gender, Nullable<System.DateTime> bBdate, string address, string city, string country, string telNos, string cpno, string emailaddress, Nullable<System.DateTime> datecreated)
@@ -491,7 +518,7 @@ namespace DataLibrary
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<trn_customer_SelectAll_Result>("trn_customer_SelectAll");
         }
     
-        public virtual int trn_customer_Update(Nullable<int> customer_id, string firstname, string lastname, string middle, string gender, Nullable<System.DateTime> bBdate, string address, string city, string country, string telNos, string cpno, string emailaddress, Nullable<System.DateTime> datecreated)
+        public virtual int trn_customer_Update(Nullable<int> customer_id, string firstname, string lastname, string middle, string gender, Nullable<System.DateTime> bBdate, string address, string city, string country, string telNos, string cpno, string emailaddress, Nullable<System.DateTime> datecreated, string agentName, string terms, Nullable<double> discount, string businessName, Nullable<int> truck_id)
         {
             var customer_idParameter = customer_id.HasValue ?
                 new ObjectParameter("customer_id", customer_id) :
@@ -545,7 +572,27 @@ namespace DataLibrary
                 new ObjectParameter("datecreated", datecreated) :
                 new ObjectParameter("datecreated", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trn_customer_Update", customer_idParameter, firstnameParameter, lastnameParameter, middleParameter, genderParameter, bBdateParameter, addressParameter, cityParameter, countryParameter, telNosParameter, cpnoParameter, emailaddressParameter, datecreatedParameter);
+            var agentNameParameter = agentName != null ?
+                new ObjectParameter("AgentName", agentName) :
+                new ObjectParameter("AgentName", typeof(string));
+    
+            var termsParameter = terms != null ?
+                new ObjectParameter("Terms", terms) :
+                new ObjectParameter("Terms", typeof(string));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(double));
+    
+            var businessNameParameter = businessName != null ?
+                new ObjectParameter("BusinessName", businessName) :
+                new ObjectParameter("BusinessName", typeof(string));
+    
+            var truck_idParameter = truck_id.HasValue ?
+                new ObjectParameter("truck_id", truck_id) :
+                new ObjectParameter("truck_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trn_customer_Update", customer_idParameter, firstnameParameter, lastnameParameter, middleParameter, genderParameter, bBdateParameter, addressParameter, cityParameter, countryParameter, telNosParameter, cpnoParameter, emailaddressParameter, datecreatedParameter, agentNameParameter, termsParameter, discountParameter, businessNameParameter, truck_idParameter);
         }
     
         public virtual int trn_transaction_log_Insert(Nullable<int> sales_id, string current_status, string statusby, Nullable<System.DateTime> dateUpdated)
@@ -1931,6 +1978,66 @@ namespace DataLibrary
                 new ObjectParameter("sales_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<customer_sales_receipt_Result>("customer_sales_receipt", sales_idParameter);
+        }
+    
+        public virtual int ref_trucking_Insert(Nullable<int> trucking_id, string trucking_name, string platenos)
+        {
+            var trucking_idParameter = trucking_id.HasValue ?
+                new ObjectParameter("trucking_id", trucking_id) :
+                new ObjectParameter("trucking_id", typeof(int));
+    
+            var trucking_nameParameter = trucking_name != null ?
+                new ObjectParameter("trucking_name", trucking_name) :
+                new ObjectParameter("trucking_name", typeof(string));
+    
+            var platenosParameter = platenos != null ?
+                new ObjectParameter("platenos", platenos) :
+                new ObjectParameter("platenos", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ref_trucking_Insert", trucking_idParameter, trucking_nameParameter, platenosParameter);
+        }
+    
+        public virtual ObjectResult<ref_trucking_Search_Result> ref_trucking_Search(Nullable<int> trucking_id, string trucking_name, string platenos, Nullable<bool> isDelete)
+        {
+            var trucking_idParameter = trucking_id.HasValue ?
+                new ObjectParameter("trucking_id", trucking_id) :
+                new ObjectParameter("trucking_id", typeof(int));
+    
+            var trucking_nameParameter = trucking_name != null ?
+                new ObjectParameter("trucking_name", trucking_name) :
+                new ObjectParameter("trucking_name", typeof(string));
+    
+            var platenosParameter = platenos != null ?
+                new ObjectParameter("platenos", platenos) :
+                new ObjectParameter("platenos", typeof(string));
+    
+            var isDeleteParameter = isDelete.HasValue ?
+                new ObjectParameter("isDelete", isDelete) :
+                new ObjectParameter("isDelete", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ref_trucking_Search_Result>("ref_trucking_Search", trucking_idParameter, trucking_nameParameter, platenosParameter, isDeleteParameter);
+        }
+    
+        public virtual ObjectResult<ref_trucking_SelectAll_Result> ref_trucking_SelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ref_trucking_SelectAll_Result>("ref_trucking_SelectAll");
+        }
+    
+        public virtual int ref_trucking_Update(Nullable<int> trucking_id, string trucking_name, string platenos)
+        {
+            var trucking_idParameter = trucking_id.HasValue ?
+                new ObjectParameter("trucking_id", trucking_id) :
+                new ObjectParameter("trucking_id", typeof(int));
+    
+            var trucking_nameParameter = trucking_name != null ?
+                new ObjectParameter("trucking_name", trucking_name) :
+                new ObjectParameter("trucking_name", typeof(string));
+    
+            var platenosParameter = platenos != null ?
+                new ObjectParameter("platenos", platenos) :
+                new ObjectParameter("platenos", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ref_trucking_Update", trucking_idParameter, trucking_nameParameter, platenosParameter);
         }
     }
 }

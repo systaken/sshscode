@@ -27,7 +27,5 @@ namespace DataLibrary
         public Nullable<double> TotalAmount { get; set; }
         public string referenceNo { get; set; }
         public string measurement { get; set; }
-        public Nullable<double> Discounted { get; set; }
-        public Nullable<double> GrandTotal { get; set; }
     }
 }

@@ -104,6 +104,12 @@
     <Compile Include="ref_category_SelectAll_Result.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ref_channel.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_customer_discount.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ref_measurement.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
@@ -141,6 +147,15 @@
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ref_supplier_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_trucking.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_trucking_Search_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_trucking_SelectAll_Result.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ref_user.cs">

@@ -17,7 +17,7 @@ namespace Inventory.business.Transaction
             idResult rtval = new idResult();
             try
             {
-                rtval.ID = pEntity.trn_customer_Insert(_ref.Firstname,_ref.Lastname,_ref.Middle,_ref.Gender,_ref.bBdate,_ref.Address,_ref.City,_ref.Country,_ref.TelNos,_ref.cpno,_ref.emailaddress,DateTime.Now).FirstOrDefault().ID;
+                rtval.ID = pEntity.trn_customer_Insert(_ref.Firstname,_ref.Lastname,_ref.Middle,_ref.Gender,_ref.bBdate,_ref.Address,_ref.City,_ref.Country,_ref.TelNos,_ref.cpno,_ref.emailaddress,DateTime.Now,_ref.AgentName,_ref.Terms,_ref.Discount,_ref.BusinessName,_ref.truck_id,_ref.isDelete).FirstOrDefault().ID;
                 pEntity.SaveChanges();
             }
             catch (Exception ex)
@@ -34,7 +34,7 @@ namespace Inventory.business.Transaction
             bool rtval = false;
             try
             {
-                pEntity.trn_customer_Update(_ref.customer_id, _ref.Firstname, _ref.Lastname, _ref.Middle, _ref.Gender, _ref.bBdate, _ref.Address, _ref.City, _ref.Country, _ref.TelNos, _ref.cpno, _ref.emailaddress, DateTime.Now);
+                pEntity.trn_customer_Update(_ref.customer_id, _ref.Firstname, _ref.Lastname, _ref.Middle, _ref.Gender, _ref.bBdate, _ref.Address, _ref.City, _ref.Country, _ref.TelNos, _ref.cpno, _ref.emailaddress, DateTime.Now, _ref.AgentName, _ref.Terms,_ref.Discount, _ref.BusinessName, _ref.truck_id);
                 pEntity.SaveChanges();
                 rtval = true;
             }
@@ -67,7 +67,6 @@ namespace Inventory.business.Transaction
                 info.Middle = cr.Middle;
                 cs.Add(info);
             }
-
             return cs;
         }
 
@@ -105,6 +104,11 @@ namespace Inventory.business.Transaction
             result.cpno = pr.cpno;
             result.TelNos = pr.TelNos;
             result.emailaddress = pr.emailaddress;
+            result.AgentName = pr.AgentName;
+            result.Terms = pr.Terms;
+            result.Discount = pr.Discount;
+            result.BusinessName = pr.BusinessName;
+            result.truck_id = pr.truck_id;
            return result;
         }
     }

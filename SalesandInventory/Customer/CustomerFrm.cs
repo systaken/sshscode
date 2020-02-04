@@ -17,6 +17,7 @@ namespace SalesandInventory.Customer
         public bool _isEdit;
         private CustomerInfo cus = new CustomerInfo();
         private Inventory.business.Transaction.Customer _cus = new  Inventory.business.Transaction.Customer();
+        private Inventory.business.Configs.Trucking _truck = new Inventory.business.Configs.Trucking();
         public int Id { get; set; }
         public string cusName { get; set; }
 
@@ -33,9 +34,21 @@ namespace SalesandInventory.Customer
             this.Close();
         }
 
+        private void LoadLists()
+        {
+            List<Truckers> dtp = _truck.SelectAll();
+            cmbTrucking.Items.Clear();
+
+            cmbTrucking.DisplayMember = "trucking_name";
+            cmbTrucking.ValueMember = "trucking_id";
+            cmbTrucking.DataSource = dtp;
+            cmbTrucking.SelectedIndex = -1;
+
+        }
+
         private void loadinformation(int id)
         {
-            cus= _cus.SelectById(id);
+            cus = _cus.SelectById(id);
             txtfirstname.Text = cus.Firstname;
             txtlastname.Text = cus.Lastname;
             txtmiddle.Text = cus.Middle;
@@ -45,6 +58,15 @@ namespace SalesandInventory.Customer
             txttel.Text = cus.TelNos;
             txtcell.Text = cus.cpno;
             txtemail.Text = cus.emailaddress;
+            if (cus.truck_id > 0)
+            {
+                cmbTrucking.SelectedValue = cus.truck_id;
+            }
+            txtagent.Text = cus.AgentName;
+            txtdiscount.Text = cus.Discount.ToString();
+            txtbusiness.Text = cus.BusinessName;
+           
+
         }
 
         private void SaveRecord()
@@ -86,6 +108,7 @@ namespace SalesandInventory.Customer
 
         private void CustomerFrm_Load(object sender, EventArgs e)
         {
+            LoadLists();
             if (Id > 0)
             {
                 lblcustid.Text = Id.ToString();
