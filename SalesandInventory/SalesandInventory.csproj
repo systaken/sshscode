@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>707E3DEEE0B78A84430BF3BD2D12EAA301D1B1EF</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6548C7726128D3B67ED2084EC4824F84D7368CF4</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>SalesandInventory_TemporaryKey.pfx</ManifestKeyFile>

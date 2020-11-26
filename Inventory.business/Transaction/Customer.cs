@@ -6,12 +6,14 @@ using DataLibrary;
 using System.Data;
 using System.Data.Objects;
 using Inventory.business.Model;
-
+using Inventory.business.Logs;
 namespace Inventory.business.Transaction
 {
     public class Customer : DBRepositories
     {
         public string _err = string.Empty;
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public int Create(CustomerInfo _ref)
         {
             idResult rtval = new idResult();
@@ -24,6 +26,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Customer CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = null;
             }
             return Convert.ToInt32(rtval.ID);
@@ -42,6 +48,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Customer CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;

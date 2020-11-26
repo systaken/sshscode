@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 315);
+            this.ClientSize = new System.Drawing.Size(874, 479);
             this.Name = "CategoryFrm";
             this.Text = "Category";
             this.ResumeLayout(false);

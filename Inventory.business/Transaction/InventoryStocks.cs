@@ -7,12 +7,14 @@ using Inventory.business.Transaction;
 using DataLibrary;
 using System.Data;
 using System.Data.Objects;
-
+using Inventory.business.Logs;
 namespace Inventory.business.Transaction
 {
     public class InventoryStocks : DBRepositories
     {
         private string _err = string.Empty;
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public bool DeductStocks(int productId, int QTY, int updatedby)
         {
             bool result = false;
@@ -25,6 +27,10 @@ namespace Inventory.business.Transaction
             catch (Exception e)
             {
                 _err = e.ToString();
+                a.logModule = "InventoryStocks CS";
+                a.logError = e.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -41,6 +47,10 @@ namespace Inventory.business.Transaction
             catch (Exception e)
             {
                 _err = e.ToString();
+                a.logModule = "InventoryStocks CS";
+                a.logError = e.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -56,6 +66,10 @@ namespace Inventory.business.Transaction
             catch (Exception e)
             {
                 _err = e.ToString();
+                a.logModule = "InventoryStocks CS";
+                a.logError = e.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;

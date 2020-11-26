@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="POInventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="log_audit">
+          <Key>
+            <PropertyRef Name="audit_id" />
+          </Key>
+          <Property Name="audit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logModule" Type="varchar" MaxLength="50" />
+          <Property Name="logError" Type="varchar(max)" />
+          <Property Name="DateCreated" Type="date" />
+        </EntityType>
         <EntityType Name="ref_access">
           <Key>
             <PropertyRef Name="access_id" />
@@ -243,6 +252,11 @@
         </Function>
         <Function Name="customer_sales_receipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="sales_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="log_audit_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="logModule" Type="varchar" Mode="In" />
+          <Parameter Name="logError" Type="varchar(max)" Mode="In" />
+          <Parameter Name="DateCreated" Type="date" Mode="In" />
         </Function>
         <Function Name="ref_category_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="category_id" Type="int" Mode="In" />
@@ -789,6 +803,7 @@
           <Parameter Name="processed_by" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="POInventoryModelStoreContainer">
+          <EntitySet Name="log_audit" EntityType="Self.log_audit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_access" EntityType="Self.ref_access" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_category" EntityType="Self.ref_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_channel" EntityType="Self.ref_channel" Schema="dbo" store:Type="Tables" />
@@ -1490,6 +1505,12 @@
             <Parameter Name="trucking_id" Mode="In" Type="Int32" />
             <Parameter Name="trucking_name" Mode="In" Type="String" />
             <Parameter Name="platenos" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="log_audit" EntityType="POInventoryModel.log_audit" />
+          <FunctionImport Name="log_audit_Insert">
+            <Parameter Name="logModule" Mode="In" Type="String" />
+            <Parameter Name="logError" Mode="In" Type="String" />
+            <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ref_category_Search_Result">
@@ -2219,6 +2240,15 @@
           <Property Type="String" Name="platenos" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="isDelete" Nullable="true" />
         </ComplexType>
+        <EntityType Name="log_audit">
+          <Key>
+            <PropertyRef Name="audit_id" />
+          </Key>
+          <Property Name="audit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logModule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="logError" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3285,6 +3315,17 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ref_trucking_Update" FunctionName="POInventoryModel.Store.ref_trucking_Update" />
+          <EntitySetMapping Name="log_audit">
+            <EntityTypeMapping TypeName="POInventoryModel.log_audit">
+              <MappingFragment StoreEntitySet="log_audit">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="logError" ColumnName="logError" />
+                <ScalarProperty Name="logModule" ColumnName="logModule" />
+                <ScalarProperty Name="audit_id" ColumnName="audit_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="log_audit_Insert" FunctionName="POInventoryModel.Store.log_audit_Insert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

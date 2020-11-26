@@ -8,12 +8,15 @@ using Inventory.business.Configs;
 using DataLibrary;
 using System.Data;
 using System.Data.Objects;
+using Inventory.business.Logs;
 namespace Inventory.business.Transaction
 {
     public class ReleaseRepositories : DBRepositories
     {
         public string _err = string.Empty;
         private Products _pr = new Products();
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public ProductReleases ProductReleaseFind(int salesid, string barcode)
         {
             trn_transactionsales_product_details_Result trx = pEntity.trn_transactionsales_product_details(salesid, barcode).FirstOrDefault();
@@ -47,6 +50,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "ReleaseRepositories CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -95,6 +102,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "ReleaseRepositories CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false; 
             }
             return result;
@@ -111,6 +122,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "ReleaseRepositories CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -133,6 +148,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "ReleaseRepositories CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -155,6 +174,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "ReleaseRepositories CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = true;
             }
             return result;
@@ -178,12 +201,14 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "ReleaseRepositories CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
         }
-
-
         public List<ProductReleases> ProductReleaseSelect(int salesid)
         {
             var trxn = pEntity.trn_transactionsales_product_details_select(salesid);
@@ -224,7 +249,5 @@ namespace Inventory.business.Transaction
             }
             return result2;
         }
-        
-
     }
 }

@@ -54,7 +54,6 @@ namespace SalesandInventory.Product
 
         private void Save()
         {
-
             pr.category_id = Convert.ToInt16(ddcategory.SelectedValue);
             pr.ProductCode = txtcode.Text;
             pr.ProductName = txtname.Text;

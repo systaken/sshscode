@@ -678,6 +678,12 @@
       <Parameter Name="trucking_name" Mode="In" Type="String" />
       <Parameter Name="platenos" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="log_audit" EntityType="POInventoryModel.log_audit" />
+    <FunctionImport Name="log_audit_Insert">
+      <Parameter Name="logModule" Mode="In" Type="String" />
+      <Parameter Name="logError" Mode="In" Type="String" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ref_category_Search_Result">
     <Property Type="Int32" Name="category_id" Nullable="false" />
@@ -1406,4 +1412,13 @@
     <Property Type="String" Name="platenos" Nullable="true" MaxLength="50" />
     <Property Type="Boolean" Name="isDelete" Nullable="true" />
   </ComplexType>
+  <EntityType Name="log_audit">
+    <Key>
+      <PropertyRef Name="audit_id" />
+    </Key>
+    <Property Name="audit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="logModule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="logError" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

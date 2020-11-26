@@ -47,6 +47,7 @@ namespace DataLibrary
         public DbSet<ref_channel> ref_channel { get; set; }
         public DbSet<ref_customer_discount> ref_customer_discount { get; set; }
         public DbSet<ref_trucking> ref_trucking { get; set; }
+        public DbSet<log_audit> log_audit { get; set; }
     
         public virtual int ref_category_Insert(Nullable<int> category_id, string categoryname)
         {
@@ -2038,6 +2039,23 @@ namespace DataLibrary
                 new ObjectParameter("platenos", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ref_trucking_Update", trucking_idParameter, trucking_nameParameter, platenosParameter);
+        }
+    
+        public virtual int log_audit_Insert(string logModule, string logError, Nullable<System.DateTime> dateCreated)
+        {
+            var logModuleParameter = logModule != null ?
+                new ObjectParameter("logModule", logModule) :
+                new ObjectParameter("logModule", typeof(string));
+    
+            var logErrorParameter = logError != null ?
+                new ObjectParameter("logError", logError) :
+                new ObjectParameter("logError", typeof(string));
+    
+            var dateCreatedParameter = dateCreated.HasValue ?
+                new ObjectParameter("DateCreated", dateCreated) :
+                new ObjectParameter("DateCreated", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("log_audit_Insert", logModuleParameter, logErrorParameter, dateCreatedParameter);
         }
     }
 }

@@ -6,11 +6,14 @@ using DataLibrary;
 using System.Data;
 using System.Data.Objects;
 using Inventory.business.Model;
+using Inventory.business.Logs;
 namespace Inventory.business.Configs
 {
     public class Categorys : DBRepositories
     {
         public string _err = string.Empty;
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public bool Create(Category _ref)
         {
             bool rtval = false;
@@ -24,6 +27,10 @@ namespace Inventory.business.Configs
             {
 
                 _err = ex.ToString();
+                a.logModule = "Category";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -42,6 +49,10 @@ namespace Inventory.business.Configs
             {
 
                 _err = ex.ToString();
+                a.logModule = "Category";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;

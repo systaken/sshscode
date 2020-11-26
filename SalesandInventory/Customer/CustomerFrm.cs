@@ -28,9 +28,16 @@ namespace SalesandInventory.Customer
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SaveRecord();
-            //Transaction.OrderFrm parent = (Transaction.OrderFrm)this.Owner;
-            //parent.cusid = Id;
+            try
+            {
+                SaveRecord();
+                //Transaction.OrderFrm parent = (Transaction.OrderFrm)this.Owner;
+                //parent.cusid = Id;
+            }
+            catch (Exception ex)
+            {
+
+            }
             this.Close();
         }
 
@@ -71,7 +78,6 @@ namespace SalesandInventory.Customer
 
         private void SaveRecord()
         {
-
             string gender = string.Empty;
             cus.Firstname = txtfirstname.Text;
             cus.Lastname = txtlastname.Text;

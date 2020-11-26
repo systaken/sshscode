@@ -6,11 +6,13 @@ using Inventory.business.Model;
 using Inventory.business.Transaction;
 using Inventory.business.Configs;
 using DataLibrary;
-
+using Inventory.business.Logs;
 namespace Inventory.business.Transaction
 {
     public class ReportClass : DBRepositories
     {
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public List<CustomerPurchase> CustomerPurchaseLists(DateTime datefrom , DateTime dateto)
         {
             var x = pEntity.customer_sales_date(datefrom, dateto);
@@ -68,8 +70,5 @@ namespace Inventory.business.Transaction
             }
             return cus;
         }
-
-
-
     }
 }

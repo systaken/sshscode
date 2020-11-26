@@ -1061,5 +1061,16 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ref_trucking_Update" FunctionName="POInventoryModel.Store.ref_trucking_Update" />
+    <EntitySetMapping Name="log_audit">
+      <EntityTypeMapping TypeName="POInventoryModel.log_audit">
+        <MappingFragment StoreEntitySet="log_audit">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="logError" ColumnName="logError" />
+          <ScalarProperty Name="logModule" ColumnName="logModule" />
+          <ScalarProperty Name="audit_id" ColumnName="audit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="log_audit_Insert" FunctionName="POInventoryModel.Store.log_audit_Insert" />
   </EntityContainerMapping>
 </Mapping>
