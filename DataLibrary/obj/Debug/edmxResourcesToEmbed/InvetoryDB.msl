@@ -1072,5 +1072,13 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="log_audit_Insert" FunctionName="POInventoryModel.Store.log_audit_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_category_SelectbyId" FunctionName="POInventoryModel.Store.ref_category_SelectbyId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_category_SelectbyId_Result">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

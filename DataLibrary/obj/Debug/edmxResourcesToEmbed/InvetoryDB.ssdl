@@ -262,6 +262,9 @@
     <Parameter Name="categoryname" Type="varchar" Mode="In" />
   </Function>
   <Function Name="ref_category_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_category_SelectbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="category_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="ref_category_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="category_id" Type="int" Mode="In" />
     <Parameter Name="categoryname" Type="varchar" Mode="In" />

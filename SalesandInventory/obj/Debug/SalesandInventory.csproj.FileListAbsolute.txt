@@ -196,3 +196,4 @@ G:\Development\POSInventory\sshscode\SalesandInventory\bin\Debug\EntityFramework
 G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.exe.manifest
 G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.application
 G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.csproj.CopyComplete
+G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.Product.CategoryFrmItem.resources

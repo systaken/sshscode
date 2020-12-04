@@ -27,3 +27,4 @@ G:\Development\POSInventory\sshscode\DataLibrary\obj\Debug\DataLibrary.csproj.Co
 G:\Development\POSInventory\sshscode\DataLibrary\obj\Debug\DataLibrary.csproj.CopyComplete
 G:\Development\POSInventory\sshscode\DataLibrary\obj\Debug\DataLibrary.dll
 G:\Development\POSInventory\sshscode\DataLibrary\obj\Debug\DataLibrary.pdb
+G:\Development\POSInventory\sshscode\DataLibrary\obj\Debug\DataLibrary.csprojAssemblyReference.cache

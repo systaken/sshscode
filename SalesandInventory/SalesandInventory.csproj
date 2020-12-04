@@ -146,6 +146,12 @@
     <Compile Include="Product\CategoryFrm.Designer.cs">
       <DependentUpon>CategoryFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Product\CategoryFrmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\CategoryFrmItem.Designer.cs">
+      <DependentUpon>CategoryFrmItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product\ProductFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Product\CategoryFrm.resx">
       <DependentUpon>CategoryFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\CategoryFrmItem.resx">
+      <DependentUpon>CategoryFrmItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\ProductFrm.resx">
       <DependentUpon>ProductFrm.cs</DependentUpon>

@@ -2057,5 +2057,14 @@ namespace DataLibrary
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("log_audit_Insert", logModuleParameter, logErrorParameter, dateCreatedParameter);
         }
+    
+        public virtual ObjectResult<ref_category_SelectbyId_Result> ref_category_SelectbyId(Nullable<int> category_id)
+        {
+            var category_idParameter = category_id.HasValue ?
+                new ObjectParameter("category_id", category_id) :
+                new ObjectParameter("category_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ref_category_SelectbyId_Result>("ref_category_SelectbyId", category_idParameter);
+        }
     }
 }

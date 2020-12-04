@@ -36,6 +36,15 @@ namespace Inventory.business.Configs
             return rtval;
         }
 
+
+        public Category SelectById(int id)
+        {
+            ref_category_SelectbyId_Result c = pEntity.ref_category_SelectbyId(id).FirstOrDefault();
+            Category result = new Category();
+            result.category_id = c.category_id;
+            result.categoryname = c.categoryname;
+            return result;
+        }
         public bool Update(Category _ref)
         {
             bool rtval = false;
@@ -63,9 +72,18 @@ namespace Inventory.business.Configs
             throw new NotImplementedException();
         }
 
-        public ObjectResult SelectAll()
+        public List<Category> SelectAll()
         {
-            return pEntity.ref_category_SelectAll();
+            var car = pEntity.ref_category_SelectAll();
+            Category result = new Category();
+            List<Category> ls = new List<Category>();
+            foreach (ref_category_SelectAll_Result c in car)
+            {
+                result.categoryname = c.categoryname;
+                result.category_id = c.category_id;
+                ls.Add(result);
+            }
+            return ls ;
         }
     } 
 }

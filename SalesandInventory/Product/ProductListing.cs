@@ -75,6 +75,7 @@ namespace SalesandInventory.Product
             Product.ProductFrm nform = new Product.ProductFrm();
             nform._isEdit = false;
             nform.ShowDialog();
+            loadInformation();
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)

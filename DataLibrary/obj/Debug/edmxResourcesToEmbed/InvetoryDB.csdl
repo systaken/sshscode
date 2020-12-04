@@ -684,6 +684,9 @@
       <Parameter Name="logError" Mode="In" Type="String" />
       <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="ref_category_SelectbyId" ReturnType="Collection(POInventoryModel.ref_category_SelectbyId_Result)">
+      <Parameter Name="category_id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ref_category_Search_Result">
     <Property Type="Int32" Name="category_id" Nullable="false" />
@@ -1421,4 +1424,8 @@
     <Property Name="logError" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="DateCreated" Type="DateTime" Precision="0" />
   </EntityType>
+  <ComplexType Name="ref_category_SelectbyId_Result">
+    <Property Type="Int32" Name="category_id" Nullable="false" />
+    <Property Type="String" Name="categoryname" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

@@ -107,6 +107,9 @@
     <Compile Include="ref_category_SelectAll_Result.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ref_category_SelectbyId_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ref_channel.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
