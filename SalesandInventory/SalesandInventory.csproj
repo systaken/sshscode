@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>707E3DEEE0B78A84430BF3BD2D12EAA301D1B1EF</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6548C7726128D3B67ED2084EC4824F84D7368CF4</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>SalesandInventory_TemporaryKey.pfx</ManifestKeyFile>
@@ -146,6 +146,12 @@
     <Compile Include="Product\CategoryFrm.Designer.cs">
       <DependentUpon>CategoryFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Product\CategoryFrmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\CategoryFrmItem.Designer.cs">
+      <DependentUpon>CategoryFrmItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product\ProductFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,18 @@
     </Compile>
     <Compile Include="Product\ProductListing.Designer.cs">
       <DependentUpon>ProductListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\SupplierFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\SupplierFrm.Designer.cs">
+      <DependentUpon>SupplierFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\SupplierListFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\SupplierListFrm.Designer.cs">
+      <DependentUpon>SupplierListFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,11 +302,20 @@
     <EmbeddedResource Include="Product\CategoryFrm.resx">
       <DependentUpon>CategoryFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Product\CategoryFrmItem.resx">
+      <DependentUpon>CategoryFrmItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Product\ProductFrm.resx">
       <DependentUpon>ProductFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\ProductListing.resx">
       <DependentUpon>ProductListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\SupplierFrm.resx">
+      <DependentUpon>SupplierFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\SupplierListFrm.resx">
+      <DependentUpon>SupplierListFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -23,9 +23,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.63134cm</Top>
-        <Left>3.27966cm</Left>
+        <Left>3.93582cm</Left>
         <Height>0.71261cm</Height>
-        <Width>9.95067cm</Width>
+        <Width>8.76533cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1287,7 +1287,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Contact</Value>
+                <Value>Contact No</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -1298,9 +1298,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
         <Top>5.74499cm</Top>
-        <Left>11.44999cm</Left>
+        <Left>10.92082cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.611cm</Width>
+        <Width>2.14017cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -1330,9 +1330,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
         <Top>4.84061cm</Top>
-        <Left>11.44999cm</Left>
+        <Left>10.92082cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.25117cm</Width>
+        <Width>1.78034cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -1362,9 +1362,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>4.018cm</Top>
-        <Left>11.44999cm</Left>
+        <Left>10.92082cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.25117cm</Width>
+        <Width>1.78034cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -1565,10 +1565,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.1in</Height>
+    <Height>4.03333in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.43333in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

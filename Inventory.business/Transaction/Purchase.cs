@@ -8,13 +8,15 @@ using Inventory.business.Configs;
 using DataLibrary;
 using System.Data;
 using System.Data.Objects;
-
+using Inventory.business.Logs;
 namespace Inventory.business.Transaction
 {
     public class Purchase : DBRepositories
     {
         public string _err = string.Empty;
         private Products prod = new Products();
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public bool Create(PurchaseRequest _ref)
         {
             bool rtval = false;
@@ -28,6 +30,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -50,6 +56,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -67,6 +77,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -84,6 +98,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -101,6 +119,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -118,6 +140,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -180,6 +206,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -244,6 +274,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = true;
             }
             return result;
@@ -266,6 +300,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -313,6 +351,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "Purchase CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -382,7 +424,5 @@ namespace Inventory.business.Transaction
             }
             return tr;
         }
-
-
     }
 }

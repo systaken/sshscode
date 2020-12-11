@@ -16,5 +16,6 @@ namespace DataLibrary
     {
         public int category_id { get; set; }
         public string categoryname { get; set; }
+        public Nullable<bool> isActive { get; set; }
     }
 }

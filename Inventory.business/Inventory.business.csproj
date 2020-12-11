@@ -58,6 +58,8 @@
     <Compile Include="Configs\Suppliers.cs" />
     <Compile Include="Configs\Trucking.cs" />
     <Compile Include="DBRepositories.cs" />
+    <Compile Include="Logs\Loggers.cs" />
+    <Compile Include="Model\AuditLogs.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\ChequeModel.cs" />
     <Compile Include="Model\CustomerInfo.cs" />
@@ -96,9 +98,7 @@
       <Name>DataLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>

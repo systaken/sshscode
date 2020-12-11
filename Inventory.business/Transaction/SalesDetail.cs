@@ -5,11 +5,14 @@ using System.Text;
 using DataLibrary;
 using System.Data.Objects;
 using Inventory.business.Model;
+using Inventory.business.Logs;
 namespace Inventory.business.Transaction
 {
     public class SalesDetail : DBRepositories
     {
         public string _err = string.Empty;
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public bool Create(TransactionDetails trx)
         {
             bool rtval = false;
@@ -28,6 +31,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "Sales Detail CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -51,8 +58,11 @@ namespace Inventory.business.Transaction
             }
             catch (Exception ex)
             {
-
                 _err = ex.ToString();
+                a.logModule = "Sales Detail CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -63,14 +73,16 @@ namespace Inventory.business.Transaction
             try
             {
                 pEntity.trn_transactionsales_detail_Delete(id,null);
-                    
                 pEntity.SaveChanges();
                 rtval = true;
             }
             catch (Exception ex)
             {
-
                 _err = ex.ToString();
+                a.logModule = "Sales Detail CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;

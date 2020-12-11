@@ -6,11 +6,14 @@ using DataLibrary;
 using System.Data;
 using System.Data.Objects;
 using Inventory.business.Model;
+using Inventory.business.Logs;
 namespace Inventory.business.Transaction
 {
     public class Sales : DBRepositories
     {
         public string _err = string.Empty;
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public bool Create(Transactions trx)
         {
             bool rtval = false;
@@ -38,6 +41,10 @@ namespace Inventory.business.Transaction
             {
 
                 _err = ex.ToString();
+                a.logModule = "Sales CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -72,6 +79,10 @@ namespace Inventory.business.Transaction
             {   
 
                 _err = ex.ToString();
+                a.logModule = "Sales CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -205,6 +216,10 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "Sales CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false; 
             }
             return result;
@@ -222,11 +237,13 @@ namespace Inventory.business.Transaction
             catch (Exception ex)
             {
                 _err = ex.ToString();
+                a.logModule = "Sales CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
         }
-
-        
     }
 }

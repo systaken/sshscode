@@ -216,5 +216,19 @@ namespace SalesandInventory
         {
             Environment.Exit(1);
         }
+
+        private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Product.CategoryFrm ChildFrm = new Product.CategoryFrm();
+            ChildFrm.MdiParent = this;
+            ChildFrm.Show();
+        }
+
+        private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Product.SupplierListFrm ChildFrm = new Product.SupplierListFrm();
+            ChildFrm.MdiParent = this;
+            ChildFrm.Show();
+        }
     }
 }

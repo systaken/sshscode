@@ -150,6 +150,7 @@ namespace SalesandInventory.Transaction
                 txn.processed_by = "";
                 _trn.CancelOrder(txn);
             }
+            loadinformation();
         }
         private void sbtnGen_Click(object sender, EventArgs e)
         {
@@ -256,6 +257,7 @@ namespace SalesandInventory.Transaction
             Report.TransactionFrm frm = new Report.TransactionFrm();
             frm.trx = trx;
             frm.Show();
+            loadinformation();
         }
 
         private void toolStripButton6_Click(object sender, EventArgs e)
@@ -289,6 +291,7 @@ namespace SalesandInventory.Transaction
                 frm.isOldTemplate = false;
                 frm.Show();
             }
+            loadinformation();
         }
 
         private void AccessApplication()

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Inventory.business.Model;
 using Inventory.business.Configs;
 using Inventory.business.Transaction;
+using Inventory.business.Logs;
 namespace SalesandInventory.Transaction
 {
     public partial class OrderFrm : Form
@@ -20,6 +21,8 @@ namespace SalesandInventory.Transaction
         private SalesDetail _trnd = new SalesDetail();
         public int cusid;
         ListViewItem itm;
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public OrderFrm()
         {
             InitializeComponent();
@@ -98,9 +101,7 @@ namespace SalesandInventory.Transaction
         int x = 1;
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-
             ProductResult pr = new ProductResult();
-
             if (cmbprod.SelectedValue != null)
             {
                 string id = cmbprod.SelectedValue.ToString();
@@ -178,8 +179,10 @@ namespace SalesandInventory.Transaction
                 int index = ProdListV.SelectedItems[0].Index;
                 string rprice = ProdListV.SelectedItems[0].SubItems[8].Text;
                 lbltotalamounts.Text = Subtraction(lbltotalamounts.Text, rprice).ToString();
-
                 ProdListV.Items.RemoveAt(index);
+            }
+            else {
+                MessageBox.Show("Please select an item/s");
             }
         }
         private double Addition(string itm, string itm2)
@@ -202,7 +205,6 @@ namespace SalesandInventory.Transaction
             btnUpdate.Enabled = true;
             btncancel.Visible = true;
             btncancel.Enabled = true;
-
             if (ProdListV.SelectedItems.Count == 1)
             {
                 int index = ProdListV.SelectedItems[0].Index;
@@ -213,6 +215,9 @@ namespace SalesandInventory.Transaction
                 lblmeasure.Text = ProdListV.SelectedItems[0].SubItems[6].Text;
                 txtqty.Text = ProdListV.SelectedItems[0].SubItems[7].Text;
                 ProdListV.Items.RemoveAt(index);
+            }
+            else {
+                MessageBox.Show("Please select an item/s");
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -300,12 +305,25 @@ namespace SalesandInventory.Transaction
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             //TODO Void Order
-            if (MessageBox.Show("Item will be cancelled","Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+            try
             {
-                CancelOrder();
+                if (MessageBox.Show("Item will be cancelled", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CancelOrder();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                a.logModule = "Cancel Order : " + lbltxnid.Text;
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
+                MessageBox.Show("Nothing to cancel");
+                this.Close();
             }
         }
-
         private void CancelOrder()
         {
             if (ProdListV.SelectedItems.Count == 1)

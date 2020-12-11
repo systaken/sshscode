@@ -91,6 +91,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="log_audit.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ref_access.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
@@ -102,6 +105,9 @@
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ref_category_SelectAll_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_category_SelectbyId_Result.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ref_channel.cs">
@@ -141,6 +147,9 @@
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ref_supplier.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ref_supplier_bydId_Result.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ref_supplier_Search_Result.cs">

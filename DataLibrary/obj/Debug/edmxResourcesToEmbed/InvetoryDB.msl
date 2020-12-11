@@ -14,6 +14,7 @@
     <EntitySetMapping Name="ref_category">
       <EntityTypeMapping TypeName="POInventoryModel.ref_category">
         <MappingFragment StoreEntitySet="ref_category">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
           <ScalarProperty Name="category_id" ColumnName="category_id" />
           <ScalarProperty Name="categoryname" ColumnName="categoryname" />
         </MappingFragment>
@@ -1061,5 +1062,38 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ref_trucking_Update" FunctionName="POInventoryModel.Store.ref_trucking_Update" />
+    <EntitySetMapping Name="log_audit">
+      <EntityTypeMapping TypeName="POInventoryModel.log_audit">
+        <MappingFragment StoreEntitySet="log_audit">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="logError" ColumnName="logError" />
+          <ScalarProperty Name="logModule" ColumnName="logModule" />
+          <ScalarProperty Name="audit_id" ColumnName="audit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="log_audit_Insert" FunctionName="POInventoryModel.Store.log_audit_Insert" />
+    <FunctionImportMapping FunctionImportName="ref_category_SelectbyId" FunctionName="POInventoryModel.Store.ref_category_SelectbyId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_category_SelectbyId_Result">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ref_category_Delete" FunctionName="POInventoryModel.Store.ref_category_Delete" />
+    <FunctionImportMapping FunctionImportName="ref_supplier_Delete" FunctionName="POInventoryModel.Store.ref_supplier_Delete" />
+    <FunctionImportMapping FunctionImportName="ref_supplier_bydId" FunctionName="POInventoryModel.Store.ref_supplier_bydId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POInventoryModel.ref_supplier_bydId_Result">
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="Supplier_name" ColumnName="Supplier_name" />
+          <ScalarProperty Name="Supplier_address" ColumnName="Supplier_address" />
+          <ScalarProperty Name="Supplier_contact" ColumnName="Supplier_contact" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

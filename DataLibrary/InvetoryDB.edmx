@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="POInventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="log_audit">
+          <Key>
+            <PropertyRef Name="audit_id" />
+          </Key>
+          <Property Name="audit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logModule" Type="varchar" MaxLength="50" />
+          <Property Name="logError" Type="varchar(max)" />
+          <Property Name="DateCreated" Type="date" />
+        </EntityType>
         <EntityType Name="ref_access">
           <Key>
             <PropertyRef Name="access_id" />
@@ -20,6 +29,7 @@
           </Key>
           <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="categoryname" Type="varchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" />
         </EntityType>
         <EntityType Name="ref_channel">
           <Key>
@@ -244,6 +254,14 @@
         <Function Name="customer_sales_receipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="sales_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="log_audit_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="logModule" Type="varchar" Mode="In" />
+          <Parameter Name="logError" Type="varchar(max)" Mode="In" />
+          <Parameter Name="DateCreated" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ref_category_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="ref_category_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="category_id" Type="int" Mode="In" />
           <Parameter Name="categoryname" Type="varchar" Mode="In" />
@@ -253,6 +271,9 @@
           <Parameter Name="categoryname" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ref_category_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ref_category_SelectbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="ref_category_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="category_id" Type="int" Mode="In" />
           <Parameter Name="categoryname" Type="varchar" Mode="In" />
@@ -337,6 +358,12 @@
           <Parameter Name="statusname" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ref_status_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ref_supplier_bydId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="supplier_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ref_supplier_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="supplier_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="ref_supplier_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Supplier_name" Type="varchar" Mode="In" />
           <Parameter Name="Supplier_address" Type="varchar" Mode="In" />
@@ -789,6 +816,7 @@
           <Parameter Name="processed_by" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="POInventoryModelStoreContainer">
+          <EntitySet Name="log_audit" EntityType="Self.log_audit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_access" EntityType="Self.ref_access" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_category" EntityType="Self.ref_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ref_channel" EntityType="Self.ref_channel" Schema="dbo" store:Type="Tables" />
@@ -828,6 +856,7 @@
           </Key>
           <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="ref_module">
           <Key>
@@ -1490,6 +1519,24 @@
             <Parameter Name="trucking_id" Mode="In" Type="Int32" />
             <Parameter Name="trucking_name" Mode="In" Type="String" />
             <Parameter Name="platenos" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="log_audit" EntityType="POInventoryModel.log_audit" />
+          <FunctionImport Name="log_audit_Insert">
+            <Parameter Name="logModule" Mode="In" Type="String" />
+            <Parameter Name="logError" Mode="In" Type="String" />
+            <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ref_category_SelectbyId" ReturnType="Collection(POInventoryModel.ref_category_SelectbyId_Result)">
+          <Parameter Name="category_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ref_category_Delete">
+          <Parameter Name="category_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ref_supplier_Delete">
+          <Parameter Name="supplier_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ref_supplier_bydId" ReturnType="Collection(POInventoryModel.ref_supplier_bydId_Result)">
+            <Parameter Name="supplier_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ref_category_Search_Result">
@@ -2219,6 +2266,27 @@
           <Property Type="String" Name="platenos" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="isDelete" Nullable="true" />
         </ComplexType>
+        <EntityType Name="log_audit">
+          <Key>
+            <PropertyRef Name="audit_id" />
+          </Key>
+          <Property Name="audit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logModule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="logError" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+        </EntityType>
+        <ComplexType Name="ref_category_SelectbyId_Result">
+          <Property Type="Int32" Name="category_id" Nullable="false" />
+          <Property Type="String" Name="categoryname" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ref_supplier_bydId_Result">
+          <Property Type="Int32" Name="supplier_id" Nullable="false" />
+          <Property Type="String" Name="Supplier_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Supplier_address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Supplier_contact" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="isDelete" Nullable="true" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2238,6 +2306,7 @@
           <EntitySetMapping Name="ref_category">
             <EntityTypeMapping TypeName="POInventoryModel.ref_category">
               <MappingFragment StoreEntitySet="ref_category">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="categoryname" ColumnName="categoryname" />
               </MappingFragment>
@@ -3285,6 +3354,39 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ref_trucking_Update" FunctionName="POInventoryModel.Store.ref_trucking_Update" />
+          <EntitySetMapping Name="log_audit">
+            <EntityTypeMapping TypeName="POInventoryModel.log_audit">
+              <MappingFragment StoreEntitySet="log_audit">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="logError" ColumnName="logError" />
+                <ScalarProperty Name="logModule" ColumnName="logModule" />
+                <ScalarProperty Name="audit_id" ColumnName="audit_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="log_audit_Insert" FunctionName="POInventoryModel.Store.log_audit_Insert" />
+          <FunctionImportMapping FunctionImportName="ref_category_SelectbyId" FunctionName="POInventoryModel.Store.ref_category_SelectbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POInventoryModel.ref_category_SelectbyId_Result">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ref_category_Delete" FunctionName="POInventoryModel.Store.ref_category_Delete" />
+          <FunctionImportMapping FunctionImportName="ref_supplier_Delete" FunctionName="POInventoryModel.Store.ref_supplier_Delete" />
+          <FunctionImportMapping FunctionImportName="ref_supplier_bydId" FunctionName="POInventoryModel.Store.ref_supplier_bydId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POInventoryModel.ref_supplier_bydId_Result">
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="Supplier_name" ColumnName="Supplier_name" />
+                <ScalarProperty Name="Supplier_address" ColumnName="Supplier_address" />
+                <ScalarProperty Name="Supplier_contact" ColumnName="Supplier_contact" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -35,15 +35,15 @@
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "ReportViewer";
-            this.reportViewer1.Size = new System.Drawing.Size(1117, 606);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(982, 708);
             this.reportViewer1.TabIndex = 0;
             // 
             // TransactionFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 606);
+            this.ClientSize = new System.Drawing.Size(982, 708);
             this.Controls.Add(this.reportViewer1);
             this.Name = "TransactionFrm";
             this.Text = "Sales Report";

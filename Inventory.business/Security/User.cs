@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using DataLibrary;
 using Inventory.business.Model;
-
+using Inventory.business.Logs;
 namespace Inventory.business.Security
 {
     public class User : DBRepositories
@@ -13,6 +13,8 @@ namespace Inventory.business.Security
         public string _userId;
         public string _gId;
         public string _position;
+        private Loggers lg = new Loggers();
+        private AuditLogs a = new AuditLogs();
         public bool IsAuthenticated(string username, string password)
         {
             bool result = false;
@@ -36,6 +38,10 @@ namespace Inventory.business.Security
             catch (Exception e)
             {
                 _err = e.ToString();
+                a.logModule = "User CS";
+                a.logError = e.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
@@ -54,6 +60,10 @@ namespace Inventory.business.Security
             {
 
                 _err = ex.ToString();
+                a.logModule = "User CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 rtval = false;
             }
             return rtval;
@@ -90,6 +100,10 @@ namespace Inventory.business.Security
             }
             catch (Exception ex) {
                 _err = ex.ToString();
+                a.logModule = "User CS";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
                 result = false;
             }
             return result;
