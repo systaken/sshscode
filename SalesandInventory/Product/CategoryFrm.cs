@@ -41,6 +41,7 @@ namespace SalesandInventory.Product
             {
                 MessageBox.Show("Please select item first.");
             }
+            loadInformation();
         }
 
         private void CategoryFrm_Load(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace SalesandInventory.Product
 
         private void loadInformation()
         {
-
+            ProdListV.Refresh();
             ProdListV.Items.Clear();
             ListViewItem itm;
             var its = _category.SelectAll();
@@ -61,6 +62,26 @@ namespace SalesandInventory.Product
                 itm.SubItems.Add(pr.categoryname);
                 this.ProdListV.Items.Add(itm);
             }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            loadInformation();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Record will be removed", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+               int id = Convert.ToInt32(this.ProdListV.SelectedItems[0].Text);
+                _category.Delete(id);
+                MessageBox.Show("Record has been deleted.");
+            }
+            else
+            {
+                MessageBox.Show("Please select item first.");
+            }
+            loadInformation();
         }
     }
 }

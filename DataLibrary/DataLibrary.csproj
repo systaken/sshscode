@@ -149,6 +149,9 @@
     <Compile Include="ref_supplier.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ref_supplier_bydId_Result.cs">
+      <DependentUpon>InvetoryDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ref_supplier_Search_Result.cs">
       <DependentUpon>InvetoryDB.tt</DependentUpon>
     </Compile>

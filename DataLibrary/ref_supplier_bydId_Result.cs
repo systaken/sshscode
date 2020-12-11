@@ -10,12 +10,14 @@
 namespace DataLibrary
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ref_category
+    public partial class ref_supplier_bydId_Result
     {
-        public int category_id { get; set; }
-        public string categoryname { get; set; }
+        public int supplier_id { get; set; }
+        public string Supplier_name { get; set; }
+        public string Supplier_address { get; set; }
+        public string Supplier_contact { get; set; }
+        public Nullable<bool> isDelete { get; set; }
         public Nullable<bool> isActive { get; set; }
     }
 }

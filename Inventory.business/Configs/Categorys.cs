@@ -67,18 +67,36 @@ namespace Inventory.business.Configs
             return rtval;
         }
 
-        public bool Delete()
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool rtval = false;
+            try
+            {
+                pEntity.ref_category_Delete(id);
+                pEntity.SaveChanges();
+                rtval = true;
+            }
+            catch (Exception ex)
+            {
+
+                _err = ex.ToString();
+                a.logModule = "Category Delete";
+                a.logError = ex.ToString();
+                a.DateCreated = DateTime.Now;
+                lg.InsertLog(a);
+                rtval = false;
+            }
+            return rtval;
         }
 
         public List<Category> SelectAll()
         {
             var car = pEntity.ref_category_SelectAll();
-            Category result = new Category();
+           
             List<Category> ls = new List<Category>();
             foreach (ref_category_SelectAll_Result c in car)
             {
+                Category result = new Category();
                 result.categoryname = c.categoryname;
                 result.category_id = c.category_id;
                 ls.Add(result);

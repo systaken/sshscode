@@ -223,5 +223,12 @@ namespace SalesandInventory
             ChildFrm.MdiParent = this;
             ChildFrm.Show();
         }
+
+        private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Product.SupplierListFrm ChildFrm = new Product.SupplierListFrm();
+            ChildFrm.MdiParent = this;
+            ChildFrm.Show();
+        }
     }
 }

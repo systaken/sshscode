@@ -197,3 +197,5 @@ G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInvento
 G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.application
 G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.csproj.CopyComplete
 G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.Product.CategoryFrmItem.resources
+G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.Product.SupplierFrm.resources
+G:\Development\POSInventory\sshscode\SalesandInventory\obj\Debug\SalesandInventory.Product.SupplierListFrm.resources

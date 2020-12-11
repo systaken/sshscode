@@ -24,6 +24,7 @@
     </Key>
     <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="categoryname" Type="varchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
   </EntityType>
   <EntityType Name="ref_channel">
     <Key>
@@ -253,6 +254,9 @@
     <Parameter Name="logError" Type="varchar(max)" Mode="In" />
     <Parameter Name="DateCreated" Type="date" Mode="In" />
   </Function>
+  <Function Name="ref_category_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="category_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="ref_category_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="category_id" Type="int" Mode="In" />
     <Parameter Name="categoryname" Type="varchar" Mode="In" />
@@ -349,6 +353,12 @@
     <Parameter Name="statusname" Type="varchar" Mode="In" />
   </Function>
   <Function Name="ref_status_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ref_supplier_bydId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="supplier_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ref_supplier_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="supplier_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="ref_supplier_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Supplier_name" Type="varchar" Mode="In" />
     <Parameter Name="Supplier_address" Type="varchar" Mode="In" />

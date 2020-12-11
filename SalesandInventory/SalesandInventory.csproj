@@ -164,6 +164,18 @@
     <Compile Include="Product\ProductListing.Designer.cs">
       <DependentUpon>ProductListing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Product\SupplierFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\SupplierFrm.Designer.cs">
+      <DependentUpon>SupplierFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\SupplierListFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\SupplierListFrm.Designer.cs">
+      <DependentUpon>SupplierListFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\CheckedinReport.cs">
@@ -298,6 +310,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Product\ProductListing.resx">
       <DependentUpon>ProductListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\SupplierFrm.resx">
+      <DependentUpon>SupplierFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\SupplierListFrm.resx">
+      <DependentUpon>SupplierListFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
